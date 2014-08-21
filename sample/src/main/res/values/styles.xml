@@ -1,0 +1,11 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="messageBarContainerStyle">@style/MessageBar.Container</item>
+        <item name="messageBarTextStyle">@style/MessageBar.Message</item>
+        <item name="messageBarButtonStyle">@style/MessageBar.Button</item>
+    </style>
+
+</resources>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Snackbar Sample</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="syrup_added">Syrup added to the %s</string>
+    <string name="crisis_averted">Crisis averted. That could have turned into a sticky situation.</string>
+    <string name="undo">Undo</string>
+
+    <string-array name="snack_names">
+        <item>Pancakes</item>
+        <item>Marzipan</item>
+        <item>Churros</item>
+        <item>Pastry</item>
+        <item>Scones</item>
+        <item>Waffles</item>
+        <item>Cookie</item>
+        <item>Doughnut</item>
+        <item>Ice cream</item>
+    </string-array>
+
+</resources>

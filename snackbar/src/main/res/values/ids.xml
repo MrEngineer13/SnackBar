@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="snackContainer" type="id" />
+    <item name="snackMessage" type="id" />
+    <item name="snackButton" type="id" />
+</resources>
