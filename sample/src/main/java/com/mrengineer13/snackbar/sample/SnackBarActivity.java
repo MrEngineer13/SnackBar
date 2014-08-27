@@ -1,5 +1,6 @@
 package com.mrengineer13.snackbar.sample;
 
+import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
