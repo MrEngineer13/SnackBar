@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import java.util.Stack;
@@ -21,7 +23,7 @@ public class SnackBar {
 
     private static final String SAVED_CURR_MSG = "SAVED_CURR_MSG";
 
-    private static final int ANIMATION_DURATION = 600;
+    private static final int ANIMATION_DURATION = 300;
 
     public static final short LONG_SNACK = 5000;
 
@@ -45,11 +47,11 @@ public class SnackBar {
 
     private Handler mHandler;
 
-    private AlphaAnimation mFadeInAnimation;
-
-    private AlphaAnimation mFadeOutAnimation;
-
     private float mPreviousY;
+
+    private AnimationSet mOutAnimationSet;
+
+    private AnimationSet mInAnimationSet;
 
     public interface OnMessageClickListener {
 
@@ -73,13 +75,37 @@ public class SnackBar {
         mSnackBtn = (TextView) v.findViewById(R.id.snackButton);
         mSnackBtn.setOnClickListener(mButtonListener);
 
-        mFadeInAnimation = new AlphaAnimation(0.0f, 1.0f);
-        mFadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
+        mInAnimationSet = new AnimationSet(false);
 
-        mFadeOutAnimation.setDuration(ANIMATION_DURATION);
-        mFadeOutAnimation.setAnimationListener(new Animation.AnimationListener() {
+        TranslateAnimation mSlideInAnimation = new TranslateAnimation(
+                TranslateAnimation.RELATIVE_TO_PARENT, 0.0f,
+                TranslateAnimation.RELATIVE_TO_PARENT, 0.0f,
+                TranslateAnimation.RELATIVE_TO_SELF, 1.0f,
+                TranslateAnimation.RELATIVE_TO_SELF, 0.0f);
+
+        AlphaAnimation mFadeInAnimation = new AlphaAnimation(0.0f, 1.0f);
+
+        mInAnimationSet.addAnimation(mSlideInAnimation);
+        mInAnimationSet.addAnimation(mFadeInAnimation);
+
+        mOutAnimationSet = new AnimationSet(false);
+
+        TranslateAnimation mSlideOutAnimation = new TranslateAnimation(
+                TranslateAnimation.RELATIVE_TO_PARENT, 0.0f,
+                TranslateAnimation.RELATIVE_TO_PARENT, 0.0f,
+                TranslateAnimation.RELATIVE_TO_SELF, 0.0f,
+                TranslateAnimation.RELATIVE_TO_SELF, 1.0f);
+
+        AlphaAnimation mFadeOutAnimation = new AlphaAnimation(1.0f, 0.0f);
+
+        mOutAnimationSet.addAnimation(mSlideOutAnimation);
+        mOutAnimationSet.addAnimation(mFadeOutAnimation);
+
+        mOutAnimationSet.setDuration(ANIMATION_DURATION);
+        mOutAnimationSet.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
+
             }
 
             @Override
@@ -95,6 +121,7 @@ public class SnackBar {
 
             @Override
             public void onAnimationRepeat(Animation animation) {
+
             }
         });
 
@@ -162,11 +189,11 @@ public class SnackBar {
         System.out.println("immediately " + immediately);
 
         if (immediately) {
-            mFadeInAnimation.setDuration(0);
+            mInAnimationSet.setDuration(0);
         } else {
-            mFadeInAnimation.setDuration(ANIMATION_DURATION);
+            mInAnimationSet.setDuration(ANIMATION_DURATION);
         }
-        mContainer.startAnimation(mFadeInAnimation);
+        mContainer.startAnimation(mInAnimationSet);
         mHandler.postDelayed(mHideRunnable, message.mDuration);
 
         mContainer.setOnTouchListener(new View.OnTouchListener() {
@@ -184,7 +211,7 @@ public class SnackBar {
 
                             if ((mContainer.getResources().getDisplayMetrics().heightPixels - location[1]) - 100 <= 0){
                                 mHandler.removeCallbacks(mHideRunnable);
-                                mContainer.startAnimation(mFadeOutAnimation);
+                                mContainer.startAnimation(mOutAnimationSet);
 
                                 if (!mSnacks.empty()) {
                                     mSnacks.clear();
@@ -223,7 +250,7 @@ public class SnackBar {
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
-            mContainer.startAnimation(mFadeOutAnimation);
+            mContainer.startAnimation(mOutAnimationSet);
         }
     };
 

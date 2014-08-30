@@ -26,6 +26,8 @@
         android:layout_marginLeft="18dp"
         android:layout_marginRight="6dp"
         android:layout_alignParentRight="true"
+        android:textColor="@drawable/button_text_color"
+        android:editable="false"
         android:textSize="14sp"
         android:capitalize="characters"
         android:layout_centerVertical="true" />
