@@ -38,6 +38,9 @@
 ####Create SnackBar
     Snackbar mSnackBar = new SnackBar(this);
     mSnackBar.show("This library is awesome!");
+    
+
+[![Snackbar on Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SnackBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/869) 
         
 
 # License
