@@ -3,9 +3,9 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="messageBarContainerStyle">@style/MessageBar.Container</item>
-        <item name="messageBarTextStyle">@style/MessageBar.Message</item>
-        <item name="messageBarButtonStyle">@style/MessageBar.Button</item>
+        <item name="snackBarContainerStyle">@style/SnackBar.Container</item>
+        <item name="snackBarTextStyle">@style/SnackBar.Message</item>
+        <item name="snackBarButtonStyle">@style/SnackBar.Button</item>
     </style>
 
 </resources>
