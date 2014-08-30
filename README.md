@@ -30,6 +30,12 @@
         
 ##2. Show a message
 
+####Add Style to your activity
+    <item name="snackBarContainerStyle">@style/SnackBar.Container</item>
+    <item name="snackBarTextStyle">@style/SnackBar.Message</item>
+    <item name="snackBarButtonStyle">@style/SnackBar.Button</item>
+
+####Create SnackBar
     Snackbar mSnackBar = new SnackBar(this);
     mSnackBar.show("This library is awesome!");
         

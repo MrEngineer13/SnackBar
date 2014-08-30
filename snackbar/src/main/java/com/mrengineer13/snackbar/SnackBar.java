@@ -1,27 +1,18 @@
 package com.mrengineer13.snackbar;
 
 import android.app.Activity;
-import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.AttributeSet;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
-import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
-import android.widget.Scroller;
 import android.widget.TextView;
 
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class SnackBar {

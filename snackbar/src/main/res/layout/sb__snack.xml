@@ -3,12 +3,12 @@
     android:id="@id/snackContainer"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    style="?attr/messageBarContainerStyle"
+    style="?attr/snackBarContainerStyle"
     android:padding="18dp">
 
     <TextView
         android:id="@id/snackMessage"
-        style="?attr/messageBarTextStyle"
+        style="?attr/snackBarTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="6dp"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@id/snackButton"
-        style="?attr/messageBarButtonStyle"
+        style="?attr/snackBarButtonStyle"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
