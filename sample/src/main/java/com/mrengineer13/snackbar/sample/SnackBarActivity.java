@@ -1,9 +1,8 @@
 package com.mrengineer13.snackbar.sample;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +56,7 @@ public class SnackBarActivity extends ActionBarActivity {
     }
 
     public void onPourSyrupClicked(View v){
-        mSnackBar.show(String.format(getString(R.string.syrup_added), mSnackNames[mSnackIndex++ % mSnackNames.length].toLowerCase()), getString(R.string.undo));
+        mSnackBar.show(String.format(getString(R.string.syrup_added), mSnackNames[mSnackIndex++ % mSnackNames.length].toLowerCase()), getString(R.string.undo), SnackBar.Style.INFO);
         mSnackBar.setOnClickListener(new SnackBar.OnMessageClickListener() {
             @Override
             public void onMessageClick(Parcelable token) {

@@ -1,4 +1,4 @@
-# Snackbar; toast-like alert pattern for Android inspired by the [Google Material Design Spec](http://www.google.com/design/spec/components/snackbars-and-toasts.html)
+# SnackBar; toast-like alert pattern for Android inspired by the [Google Material Design Spec](http://www.google.com/design/spec/components/snackbars-and-toasts.html)
 
 ![Mr.Waffle](https://cloud.githubusercontent.com/assets/1573624/4054112/5f907220-2d88-11e4-9624-dd08fa49ac78.png)
 
@@ -7,6 +7,7 @@
 * Set message text and optionally duration
 * Shows only one message at a time 
 * Can have action item (e.g. undo, refresh, etc.)
+* Set text color of action items 
 * Swipe down to dismiss all notifications as per documentation
 * Backwards compatible to 2.3.x
 
@@ -40,7 +41,7 @@
     mSnackBar.show("This library is awesome!");
     
 
-[![Snackbar on Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SnackBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/869) 
+[![SnackBar on Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SnackBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/869) 
         
 
 # License
