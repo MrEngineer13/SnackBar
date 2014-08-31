@@ -1,5 +1,8 @@
 <component name="CopyrightManager">
-  <settings default="">
+  <settings default="Apache V2.0">
+    <module2copyright>
+      <element module="Project Files" copyright="Apache V2.0" />
+    </module2copyright>
     <LanguageOptions name="Groovy">
       <option name="fileTypeOverride" value="1" />
     </LanguageOptions>
