@@ -1,24 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 20
     buildToolsVersion "20.0.0"
 
     defaultConfig {
         applicationId "com.mrengineer13.snackbar"
         minSdkVersion 8
-        targetSdkVersion 19
+        targetSdkVersion 20
         versionCode 2
-        versionName "0.2"
+        versionName "0.2.0"
     }
-    buildTypes {
-        release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
