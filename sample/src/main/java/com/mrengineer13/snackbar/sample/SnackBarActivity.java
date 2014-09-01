@@ -22,7 +22,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.mrengineer13.snackbar.SnackBar;
+import com.github.mrengineer13.snackbar.SnackBar;
 
 
 public class SnackBarActivity extends ActionBarActivity {

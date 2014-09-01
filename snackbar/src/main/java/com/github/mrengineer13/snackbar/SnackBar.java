@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package com.mrengineer13.snackbar;
+package com.github.mrengineer13.snackbar;
 
 import android.app.Activity;
 import android.content.Context;

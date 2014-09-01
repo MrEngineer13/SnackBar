@@ -5,10 +5,10 @@ android {
     buildToolsVersion "20.0.0"
 
     defaultConfig {
-        applicationId "com.mrengineer13.snackbar"
+        applicationId "com.github.mrengineer13.snackbar"
         minSdkVersion 8
         targetSdkVersion 20
-        versionCode 3
-        versionName "0.3.0"
+        versionCode 4
+        versionName "0.4.0"
     }
 }
