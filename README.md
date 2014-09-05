@@ -1,5 +1,7 @@
 # SnackBar; toast-like alert pattern for Android inspired by the [Google Material Design Spec](http://www.google.com/design/spec/components/snackbars-and-toasts.html)
 
+[![SnackBar on Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SnackBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/869) 
+
 ![Mr.Waffle](https://cloud.githubusercontent.com/assets/1573624/4054112/5f907220-2d88-11e4-9624-dd08fa49ac78.png)
 
 # Features
@@ -19,9 +21,9 @@
 # Usage
 ##1. Adding Snacks to your project
 ###Android Studio/IntelliJ
-1. Download ZIP then extract the SnackBar project
-1. From IDE: File > Import Module -> SnackBar
-1. File > Project Structure > Dependencies Tab > Add > Module dependency > SnackBar
+    dependencies {
+        compile 'com.github.mrengineer13:snackbar:0.2.0'
+    }
 
 ###Eclipse
 1. Download ZIP then extract the SnackBar project
@@ -41,4 +43,3 @@
     mSnackBar.show("This library is awesome!");
     
 
-[![SnackBar on Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SnackBar-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/869) 

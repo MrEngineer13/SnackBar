@@ -24,3 +24,4 @@ proguard/
 
 #IntelliJ
 .idea/workspace.xml
+gradle.properties
