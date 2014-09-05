@@ -37,7 +37,7 @@
     <item name="snackBarButtonStyle">@style/SnackBar.Button</item>
 
 ####Create SnackBar
-    Snackbar mSnackBar = new SnackBar(this);
+    SnackBar mSnackBar = new SnackBar(this);
     mSnackBar.show("This library is awesome!");
     
 
