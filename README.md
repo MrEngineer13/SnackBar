@@ -20,7 +20,9 @@
 
 # Usage
 ##1. Adding Snacks to your project
-###Android Studio/IntelliJ
+###Maven
+Just add the following to your `build.gradle`.
+
     dependencies {
         compile 'com.github.mrengineer13:snackbar:0.2.0'
     }
@@ -31,15 +33,26 @@
 1. Right click on your project
 1. Android > Library: Add > SnackBar
         
-##2. Show a message
+## 2. Show a message
 
-####Add Style to your activity
+#### Add Style to your activity
     <item name="snackBarContainerStyle">@style/SnackBar.Container</item>
     <item name="snackBarTextStyle">@style/SnackBar.Message</item>
     <item name="snackBarButtonStyle">@style/SnackBar.Button</item>
 
-####Create SnackBar
+#### Create SnackBar
     Snackbar mSnackBar = new SnackBar(this);
     mSnackBar.show("This library is awesome!");
+    
+  
+# Contribution
+=============
+## Pull requests are welcome!
+
+Feel free to contribute to SnackBar.
+
+If you've implemented a bug fix or new feature, just create a pull request.
+
+If you have a bug to report a feature to request or have other questions, [file an issue](https://github.com/MrEngineer13/SnackBar/issues/new). I'll try to answer as soon as I can.
     
 
