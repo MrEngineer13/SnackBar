@@ -46,7 +46,6 @@ Just add the following to your `build.gradle`.
     
   
 # Contribution
-=============
 ## Pull requests are welcome!
 
 Feel free to contribute to SnackBar.
