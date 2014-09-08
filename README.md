@@ -13,13 +13,13 @@
 * Swipe down to dismiss all notifications as per documentation
 * Backwards compatible to 2.3.x
 
-![Snackbar Screenshot via Google](http://material-design.storage.googleapis.com/images/components-toasts-specs-spec_toast_03_1_large_mdpi.png)
+![SnackBar Screenshot via Google](http://material-design.storage.googleapis.com/images/components-toasts-specs-spec_toast_03_1_large_mdpi.png)
 
 
-[![Snackbar on Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=com.mrengineer13.snackbar.sample)
+[![SnackBar on Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=com.mrengineer13.snackbar.sample)
 
 # Usage
-##1. Adding Snacks to your project
+##1. Add SnackBar to your project
 ###Maven
 Just add the following to your `build.gradle`.
 
@@ -46,7 +46,6 @@ Just add the following to your `build.gradle`.
     
   
 # Contribution
-=============
 ## Pull requests are welcome!
 
 Feel free to contribute to SnackBar.
@@ -55,4 +54,3 @@ If you've implemented a bug fix or new feature, just create a pull request.
 
 If you have a bug to report a feature to request or have other questions, [file an issue](https://github.com/MrEngineer13/SnackBar/issues/new). I'll try to answer as soon as I can.
     
-

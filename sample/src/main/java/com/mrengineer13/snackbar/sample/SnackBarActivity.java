@@ -16,11 +16,11 @@
 package com.mrengineer13.snackbar.sample;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Spinner;
 
 import com.github.mrengineer13.snackbar.SnackBar;
 
@@ -30,6 +30,16 @@ public class SnackBarActivity extends ActionBarActivity {
     public static final String SAVED_SNACKBAR = "SAVED_SNACKBAR";
 
     public static final String SAVED_COUNT = "SAVED_COUNT";
+
+    static final int SHORT_MSG = 0, LONG_MSG = 1;
+
+    static final int SHORT_SNACK = 0, MED_SNACK = 1, LONG_SNACK = 2;
+
+    static final int RED = 0, ORANGE = 1, YELLOW = 2, GREEN = 3, BLUE = 4, PURPLE = 5, PINK = 6, DEFAULT = 7, ALERT = 8, CONFIRM = 9, INFO = 10;
+
+    static final int ACTION_BTN = 0, NO_ACTION_BTN = 1;
+
+    private Spinner mMsgLengthOptions, mDurationOptions, mActionBtnOptions, mActionBtnColorOptions;
 
     private String[] mSnackNames;
 
@@ -44,6 +54,11 @@ public class SnackBarActivity extends ActionBarActivity {
 
         mSnackNames = getResources().getStringArray(R.array.snack_names);
         mSnackBar = new SnackBar(this);
+
+        mMsgLengthOptions = (Spinner) findViewById(R.id.message_length_selector);
+        mDurationOptions = (Spinner) findViewById(R.id.snack_duration_selector);
+        mActionBtnOptions = (Spinner) findViewById(R.id.action_btn_presence_selector);
+        mActionBtnColorOptions = (Spinner) findViewById(R.id.action_btn_color);
     }
 
 
@@ -66,19 +81,82 @@ public class SnackBarActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onSnackClicked(View v){
-        mSnackBar.show(mSnackNames[mSnackIndex++ % mSnackNames.length], SnackBar.MED_SNACK);
-    }
+    public void onCreateClicked(View view){
+        String message = "";
+        short duration = 0;
+        SnackBar.Style style = SnackBar.Style.DEFAULT;
 
-    public void onPourSyrupClicked(View v){
-        mSnackBar.show(String.format(getString(R.string.syrup_added), mSnackNames[mSnackIndex++ % mSnackNames.length].toLowerCase()), getString(R.string.undo), SnackBar.Style.INFO);
-        mSnackBar.setOnClickListener(new SnackBar.OnMessageClickListener() {
-            @Override
-            public void onMessageClick(Parcelable token) {
-                mSnackBar.clear();
-                mSnackBar.show(getString(R.string.crisis_averted));
-            }
-        });
+        int selectedMessageLength = mMsgLengthOptions.getSelectedItemPosition();
+        switch (selectedMessageLength){
+            case SHORT_MSG:
+                message = "This is a one-line message.";
+                break;
+            case LONG_MSG:
+                message = "This message is a lot longer, it should stretch at least two lines. ";
+                break;
+        }
+
+        int selectedDuration = mDurationOptions.getSelectedItemPosition();
+        switch (selectedDuration){
+            case SHORT_SNACK:
+                duration = SnackBar.SHORT_SNACK;
+                break;
+            case MED_SNACK:
+                duration = SnackBar.MED_SNACK;
+                break;
+            case LONG_SNACK:
+                duration = SnackBar.LONG_SNACK;
+                break;
+        }
+
+        int selectedActionBtnColor = mActionBtnColorOptions.getSelectedItemPosition();
+        switch (selectedActionBtnColor){
+            case RED:
+                style = SnackBar.Style.RED;
+                break;
+            case ORANGE:
+                style = SnackBar.Style.ORANGE;
+                break;
+            case YELLOW:
+                style = SnackBar.Style.YELLOW;
+                break;
+            case GREEN:
+                style = SnackBar.Style.GREEN;
+                break;
+            case BLUE:
+                style = SnackBar.Style.BLUE;
+                break;
+            case PURPLE:
+                style = SnackBar.Style.PURPLE;
+                break;
+            case PINK:
+                style = SnackBar.Style.PINK;
+                break;
+            case DEFAULT:
+                style = SnackBar.Style.DEFAULT;
+                break;
+            case ALERT:
+                style = SnackBar.Style.ALERT;
+                break;
+            case CONFIRM:
+                style = SnackBar.Style.CONFIRM;
+                break;
+            case INFO:
+                style = SnackBar.Style.INFO;
+                break;
+        }
+
+        int selectedActionBtnExistance = mActionBtnOptions.getSelectedItemPosition();
+        switch (selectedActionBtnExistance){
+            case ACTION_BTN:
+                mSnackBar.show(message, "Action", style, duration);
+                break;
+            case NO_ACTION_BTN:
+                mSnackBar.show(message, duration);
+                break;
+        }
+
+
     }
 
     @Override

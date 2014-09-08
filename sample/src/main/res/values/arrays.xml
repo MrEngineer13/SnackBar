@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="text_length">
+        <item>Short message</item>
+        <item>Long message</item>
+    </string-array>
+    <string-array name="snack_duration">
+        <item>Short</item>
+        <item>Medium</item>
+        <item>Long</item>
+    </string-array>
+    <string-array name="action_present">
+        <item>Action button present</item>
+        <item>No action button</item>
+    </string-array>
+    <string-array name="action_color">
+        <item>Red</item>
+        <item>Orange</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Default</item>
+        <item>Alert</item>
+        <item>Confirm</item>
+        <item>Info</item>
+    </string-array>
+</resources>
