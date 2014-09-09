@@ -41,9 +41,12 @@ Just add the following to your `build.gradle`.
     <item name="snackBarButtonStyle">@style/SnackBar.Button</item>
 
 #### Create SnackBar
-    Snackbar mSnackBar = new SnackBar(this);
+    SnackBar mSnackBar = new SnackBar(this);
     mSnackBar.show("This library is awesome!");
     
+  
+## Using this library?
+If you're using this library in one of your projects just [send me a tweet](https://twitter.com/MrEngineer13) and I'll add your project to the list.
   
 # Contribution
 ## Pull requests are welcome!
