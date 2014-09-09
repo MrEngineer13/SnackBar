@@ -8,8 +8,8 @@ android {
         applicationId "com.mrengineer13.snackbar.sample"
         minSdkVersion 9
         targetSdkVersion 20
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.3"
     }
 
     packagingOptions {

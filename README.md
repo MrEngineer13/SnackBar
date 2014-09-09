@@ -19,7 +19,7 @@
 [![SnackBar on Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=com.mrengineer13.snackbar.sample)
 
 # Usage
-##1. Adding Snacks to your project
+##1. Add SnackBar to your project
 ###Maven
 Just add the following to your `build.gradle`.
 
@@ -46,7 +46,6 @@ Just add the following to your `build.gradle`.
     
   
 # Contribution
-=============
 ## Pull requests are welcome!
 
 Feel free to contribute to SnackBar.

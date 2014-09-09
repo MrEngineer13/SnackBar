@@ -8,21 +8,82 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".SnackBarActivity">
 
-    <Button
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I'm Hungry"
-        android:id="@+id/button"
-        android:onClick="onSnackClicked"
-        android:layout_centerInParent="true" />
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pour Syrup"
-        android:id="@+id/button2"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/button"
-        android:onClick="onPourSyrupClicked" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Build a SnackBar with:"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message Length" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_length_selector"
+            android:entries="@array/text_length"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duration" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/snack_duration_selector"
+            android:entries="@array/snack_duration"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Action button presence" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_btn_presence_selector"
+            android:entries="@array/action_present"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Action button color" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_btn_color"
+            android:entries="@array/action_color"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            android:id="@+id/button3"
+            android:onClick="onCreateClicked"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
