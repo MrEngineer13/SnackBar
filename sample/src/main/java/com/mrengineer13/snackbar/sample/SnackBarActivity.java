@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 
+import com.github.mrengineer13.about.AboutActivity;
 import com.github.mrengineer13.snackbar.SnackBar;
 
 
@@ -75,7 +76,10 @@ public class SnackBarActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_about) {
+            startActivity(AboutActivity.getAboutActivityIntent(this, "MrEngineer13","https://github.com/MrEngineer13",
+                    "MrEngineer13@live.com","@MrEngineer13", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6PSQMTJYG5VJ",
+                    true, "MrEngineer13", null));
             return true;
         }
         return super.onOptionsItemSelected(item);
