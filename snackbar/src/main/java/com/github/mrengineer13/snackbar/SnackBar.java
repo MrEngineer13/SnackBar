@@ -48,6 +48,8 @@ public class SnackBar {
 
     public static final short SHORT_SNACK = 2000;
 
+	public static final short PERMANENT_SNACK = 0;
+
     private View mContainer;
 
 	private View mParentView;
