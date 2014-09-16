@@ -48,7 +48,11 @@ public class SnackBar {
 
     public static final short SHORT_SNACK = 2000;
 
+	public static final short PERMANENT_SNACK = 0;
+
     private View mContainer;
+
+	private View mParentView;
 
     private TextView mSnackMsg;
 
@@ -90,6 +94,7 @@ public class SnackBar {
     }
 
     private void init(View v) {
+		mParentView = v;
         mContainer = v.findViewById(R.id.snackContainer);
         mContainer.setVisibility(View.GONE);
         mSnackMsg = (TextView) v.findViewById(R.id.snackMessage);
@@ -212,6 +217,13 @@ public class SnackBar {
         }
     }
 
+	public int getHeight()
+	{
+		mContainer.measure(View.MeasureSpec.makeMeasureSpec(mParentView.getWidth(),View.MeasureSpec.EXACTLY),
+				View.MeasureSpec.makeMeasureSpec(mParentView.getHeight(), View.MeasureSpec.AT_MOST));
+		return mContainer.getMeasuredHeight();
+	}
+
     private ColorStateList getSnackButtonBackground(Style style) {
         switch (style){
             case RED:
@@ -266,7 +278,10 @@ public class SnackBar {
             mInAnimationSet.setDuration(ANIMATION_DURATION);
         }
         mContainer.startAnimation(mInAnimationSet);
-        mHandler.postDelayed(mHideRunnable, message.mDuration);
+
+		if(message.mDuration > 0) {
+			mHandler.postDelayed(mHideRunnable, message.mDuration);
+		}
 
         mContainer.setOnTouchListener(new View.OnTouchListener() {
             @Override
