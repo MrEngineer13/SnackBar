@@ -224,6 +224,11 @@ public class SnackBar {
 		return mContainer.getMeasuredHeight();
 	}
 
+	public View getContainerView()
+	{
+		return mContainer;
+	}
+
     private ColorStateList getSnackButtonBackground(Style style) {
         switch (style){
             case RED:
