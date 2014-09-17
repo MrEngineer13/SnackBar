@@ -24,7 +24,7 @@
 Just add the following to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.mrengineer13:snackbar:0.2.0'
+        compile 'com.github.mrengineer13:snackbar:0.3.0'
     }
 
 ###Eclipse
