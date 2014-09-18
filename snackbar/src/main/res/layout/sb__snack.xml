@@ -7,7 +7,7 @@
         android:id="@id/snackMessage"
         style="?attr/snackBarTextStyle"/>
 
-    <TextView
+    <Button
         android:id="@id/snackButton"
         style="?attr/snackBarButtonStyle"/>
 

@@ -30,6 +30,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Stack;
@@ -56,7 +57,7 @@ public class SnackBar {
 
     private TextView mSnackMsg;
 
-    private TextView mSnackBtn;
+    private Button mSnackBtn;
 
     private Stack<Snack> mSnacks = new Stack<Snack>();
 
@@ -98,7 +99,7 @@ public class SnackBar {
         mContainer = v.findViewById(R.id.snackContainer);
         mContainer.setVisibility(View.GONE);
         mSnackMsg = (TextView) v.findViewById(R.id.snackMessage);
-        mSnackBtn = (TextView) v.findViewById(R.id.snackButton);
+        mSnackBtn = (Button) v.findViewById(R.id.snackButton);
         mSnackBtn.setOnClickListener(mButtonListener);
 
         mInAnimationSet = new AnimationSet(false);

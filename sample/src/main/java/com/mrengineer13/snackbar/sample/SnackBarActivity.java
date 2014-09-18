@@ -16,17 +16,20 @@
 package com.mrengineer13.snackbar.sample;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.github.mrengineer13.about.AboutActivity;
 import com.github.mrengineer13.snackbar.SnackBar;
 
 
-public class SnackBarActivity extends ActionBarActivity {
+public class SnackBarActivity extends ActionBarActivity
+        implements SnackBar.OnMessageClickListener {
 
     public static final String SAVED_SNACKBAR = "SAVED_SNACKBAR";
 
@@ -42,8 +45,6 @@ public class SnackBarActivity extends ActionBarActivity {
 
     private Spinner mMsgLengthOptions, mDurationOptions, mActionBtnOptions, mActionBtnColorOptions;
 
-    private String[] mSnackNames;
-
     private int mSnackIndex = 0;
 
     private SnackBar mSnackBar;
@@ -53,8 +54,8 @@ public class SnackBarActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snack_bar);
 
-        mSnackNames = getResources().getStringArray(R.array.snack_names);
         mSnackBar = new SnackBar(this);
+        mSnackBar.setOnClickListener(this);
 
         mMsgLengthOptions = (Spinner) findViewById(R.id.message_length_selector);
         mDurationOptions = (Spinner) findViewById(R.id.snack_duration_selector);
@@ -77,21 +78,21 @@ public class SnackBarActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_about) {
-            startActivity(AboutActivity.getAboutActivityIntent(this, "MrEngineer13","https://github.com/MrEngineer13",
-                    "MrEngineer13@live.com","@MrEngineer13", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6PSQMTJYG5VJ",
+            startActivity(AboutActivity.getAboutActivityIntent(this, "MrEngineer13", "https://github.com/MrEngineer13",
+                    "MrEngineer13@live.com", "@MrEngineer13", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6PSQMTJYG5VJ",
                     true, "MrEngineer13", null));
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    public void onCreateClicked(View view){
+    public void onCreateClicked(View view) {
         String message = "";
         short duration = 0;
         SnackBar.Style style = SnackBar.Style.DEFAULT;
 
         int selectedMessageLength = mMsgLengthOptions.getSelectedItemPosition();
-        switch (selectedMessageLength){
+        switch (selectedMessageLength) {
             case SHORT_MSG:
                 message = "This is a one-line message.";
                 break;
@@ -101,7 +102,7 @@ public class SnackBarActivity extends ActionBarActivity {
         }
 
         int selectedDuration = mDurationOptions.getSelectedItemPosition();
-        switch (selectedDuration){
+        switch (selectedDuration) {
             case SHORT_SNACK:
                 duration = SnackBar.SHORT_SNACK;
                 break;
@@ -114,7 +115,7 @@ public class SnackBarActivity extends ActionBarActivity {
         }
 
         int selectedActionBtnColor = mActionBtnColorOptions.getSelectedItemPosition();
-        switch (selectedActionBtnColor){
+        switch (selectedActionBtnColor) {
             case RED:
                 style = SnackBar.Style.RED;
                 break;
@@ -151,7 +152,7 @@ public class SnackBarActivity extends ActionBarActivity {
         }
 
         int selectedActionBtnExistance = mActionBtnOptions.getSelectedItemPosition();
-        switch (selectedActionBtnExistance){
+        switch (selectedActionBtnExistance) {
             case ACTION_BTN:
                 mSnackBar.show(message, "Action", style, duration);
                 break;
@@ -179,5 +180,10 @@ public class SnackBarActivity extends ActionBarActivity {
         mSnackBar.onRestoreInstanceState(loadState.getBundle(SAVED_SNACKBAR));
         // might as well load the counter too
         mSnackIndex = loadState.getInt(SAVED_COUNT);
+    }
+
+    @Override
+    public void onMessageClick(Parcelable token) {
+        Toast.makeText(this, "Button clicked!", Toast.LENGTH_LONG).show();
     }
 }
