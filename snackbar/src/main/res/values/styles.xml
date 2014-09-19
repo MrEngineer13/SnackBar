@@ -28,12 +28,13 @@
         <item name="android:layout_marginRight">24dp</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:textColor">#fff</item>
+        <item name="android:editable">false</item>
     </style>
 
     <style name="SnackBar.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:background">@color/sb__snack_bkgnd</item>
+        <item name="android:background">@drawable/sb__button_selector</item>
         <item name="android:drawablePadding">12dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
@@ -42,7 +43,6 @@
         <item name="android:layout_marginRight">24dp</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:textColor">@color/sb__default_button_text_color</item>
-        <item name="android:editable">false</item>
         <item name="android:textSize">14sp</item>
         <item name="android:capitalize">characters</item>
         <item name="android:layout_centerVertical">true</item>
