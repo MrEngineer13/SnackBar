@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="aboutLibrary">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/aboutLibrary/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/aboutLibrary/res" />
+      <root url="jar://$PROJECT_DIR$/sample/build/intermediates/exploded-aar/aboutLibrary/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

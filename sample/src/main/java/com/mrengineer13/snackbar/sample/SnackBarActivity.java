@@ -33,19 +33,15 @@ public class SnackBarActivity extends ActionBarActivity
 
     public static final String SAVED_SNACKBAR = "SAVED_SNACKBAR";
 
-    public static final String SAVED_COUNT = "SAVED_COUNT";
-
     static final int SHORT_MSG = 0, LONG_MSG = 1;
 
     static final int SHORT_SNACK = 0, MED_SNACK = 1, LONG_SNACK = 2;
 
-    static final int RED = 0, ORANGE = 1, YELLOW = 2, GREEN = 3, BLUE = 4, PURPLE = 5, PINK = 6, DEFAULT = 7, ALERT = 8, CONFIRM = 9, INFO = 10;
+    static final int RED = 0, ORANGE = 1, YELLOW = 2;
 
     static final int ACTION_BTN = 0, NO_ACTION_BTN = 1;
 
     private Spinner mMsgLengthOptions, mDurationOptions, mActionBtnOptions, mActionBtnColorOptions;
-
-    private int mSnackIndex = 0;
 
     private SnackBar mSnackBar;
 
@@ -89,7 +85,7 @@ public class SnackBarActivity extends ActionBarActivity
     public void onCreateClicked(View view) {
         String message = "";
         short duration = 0;
-        SnackBar.Style style = SnackBar.Style.DEFAULT;
+        int color;
 
         int selectedMessageLength = mMsgLengthOptions.getSelectedItemPosition();
         switch (selectedMessageLength) {
@@ -116,45 +112,22 @@ public class SnackBarActivity extends ActionBarActivity
 
         int selectedActionBtnColor = mActionBtnColorOptions.getSelectedItemPosition();
         switch (selectedActionBtnColor) {
+            default:
             case RED:
-                style = SnackBar.Style.RED;
+                color = R.color.sb__button_text_color;
                 break;
             case ORANGE:
-                style = SnackBar.Style.ORANGE;
+                color = R.color.orange;
                 break;
             case YELLOW:
-                style = SnackBar.Style.YELLOW;
-                break;
-            case GREEN:
-                style = SnackBar.Style.GREEN;
-                break;
-            case BLUE:
-                style = SnackBar.Style.BLUE;
-                break;
-            case PURPLE:
-                style = SnackBar.Style.PURPLE;
-                break;
-            case PINK:
-                style = SnackBar.Style.PINK;
-                break;
-            case DEFAULT:
-                style = SnackBar.Style.DEFAULT;
-                break;
-            case ALERT:
-                style = SnackBar.Style.ALERT;
-                break;
-            case CONFIRM:
-                style = SnackBar.Style.CONFIRM;
-                break;
-            case INFO:
-                style = SnackBar.Style.INFO;
+                color = R.color.yellow;
                 break;
         }
 
         int selectedActionBtnExistance = mActionBtnOptions.getSelectedItemPosition();
         switch (selectedActionBtnExistance) {
             case ACTION_BTN:
-                mSnackBar.show(message, "Action", style, duration);
+                mSnackBar.show(message, "Action", color, duration);
                 break;
             case NO_ACTION_BTN:
                 mSnackBar.show(message, duration);
@@ -169,8 +142,6 @@ public class SnackBarActivity extends ActionBarActivity
         super.onSaveInstanceState(saveState);
         // use this to save your snacks for later
         saveState.putBundle(SAVED_SNACKBAR, mSnackBar.onSaveInstanceState());
-        // just for saving the number of times the button has been pressed
-        saveState.putInt(SAVED_COUNT, mSnackIndex);
     }
 
     @Override
@@ -178,8 +149,6 @@ public class SnackBarActivity extends ActionBarActivity
         super.onRestoreInstanceState(loadState);
         // use this to load your snacks for later
         mSnackBar.onRestoreInstanceState(loadState.getBundle(SAVED_SNACKBAR));
-        // might as well load the counter too
-        mSnackIndex = loadState.getInt(SAVED_COUNT);
     }
 
     @Override
