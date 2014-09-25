@@ -24,7 +24,7 @@
 Just add the following to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.mrengineer13:snackbar:0.3.0'
+        compile 'com.github.mrengineer13:snackbar:0.4.0'
     }
 
 ###Eclipse
@@ -35,15 +35,10 @@ Just add the following to your `build.gradle`.
         
 ## 2. Show a message
 
-#### Add Style to your activity
-    <item name="snackBarContainerStyle">@style/SnackBar.Container</item>
-    <item name="snackBarTextStyle">@style/SnackBar.Message</item>
-    <item name="snackBarButtonStyle">@style/SnackBar.Button</item>
-
 #### Create SnackBar
     SnackBar mSnackBar = new SnackBar(this);
     mSnackBar.show("This library is awesome!");
-    
+
   
 ## Using this library?
 If you're using this library in one of your projects just [send me a tweet](https://twitter.com/MrEngineer13) and I'll add your project to the list.

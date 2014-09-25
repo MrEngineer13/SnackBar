@@ -37,7 +37,7 @@ public class SnackBarActivity extends ActionBarActivity
 
     static final int SHORT_SNACK = 0, MED_SNACK = 1, LONG_SNACK = 2;
 
-    static final int RED = 0, ORANGE = 1, YELLOW = 2;
+    static final int DEFAULT = 0, ALERT = 1, CONFIRM = 2, INFO = 3;
 
     static final int ACTION_BTN = 0, NO_ACTION_BTN = 1;
 
@@ -85,7 +85,7 @@ public class SnackBarActivity extends ActionBarActivity
     public void onCreateClicked(View view) {
         String message = "";
         short duration = 0;
-        int color;
+        SnackBar.Style style;
 
         int selectedMessageLength = mMsgLengthOptions.getSelectedItemPosition();
         switch (selectedMessageLength) {
@@ -113,21 +113,24 @@ public class SnackBarActivity extends ActionBarActivity
         int selectedActionBtnColor = mActionBtnColorOptions.getSelectedItemPosition();
         switch (selectedActionBtnColor) {
             default:
-            case RED:
-                color = R.color.sb__button_text_color;
+            case DEFAULT:
+                style = SnackBar.Style.DEFAULT;
                 break;
-            case ORANGE:
-                color = R.color.orange;
+            case ALERT:
+                style = SnackBar.Style.ALERT;
                 break;
-            case YELLOW:
-                color = R.color.yellow;
+            case CONFIRM:
+                style = SnackBar.Style.CONFIRM;
+                break;
+            case INFO:
+                style = SnackBar.Style.INFO;
                 break;
         }
 
         int selectedActionBtnExistance = mActionBtnOptions.getSelectedItemPosition();
         switch (selectedActionBtnExistance) {
             case ACTION_BTN:
-                mSnackBar.show(message, "Action", color, duration);
+                mSnackBar.show(message, "Action", style, duration);
                 break;
             case NO_ACTION_BTN:
                 mSnackBar.show(message, duration);

@@ -1,36 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/snackContainer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
-    android:background="@color/sb__snack_bkgnd"
-    android:orientation="horizontal">
+    style="@style/SnackBar.Container">
 
     <TextView
         android:id="@id/snackMessage"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        android:layout_marginLeft="@dimen/horizontal_margin"
-        android:layout_marginRight="@dimen/horizontal_margin"
-        android:layout_marginTop="@dimen/vertical_margin_top"
-        android:layout_marginBottom="@dimen/vertical_margin_bottom"
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        style="@style/SnackBar.Message"
         tools:text="Sample message"/>
 
     <Button
         android:id="@id/snackButton"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/vertical_margin_top"
-        android:layout_marginBottom="@dimen/vertical_margin_bottom"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:background="@drawable/sb__button_selector"
-        android:layout_marginRight="@dimen/horizontal_margin"
+        style="@style/SnackBar.Button"
         tools:text="Action"/>
 
-</LinearLayout>
+</RelativeLayout>

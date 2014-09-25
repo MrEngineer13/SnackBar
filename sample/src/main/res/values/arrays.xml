@@ -14,8 +14,9 @@
         <item>No action button</item>
     </string-array>
     <string-array name="action_color">
-        <item>Red</item>
-        <item>Orange</item>
-        <item>Yellow</item>
+        <item>Default</item>
+        <item>Alert</item>
+        <item>Confirm</item>
+        <item>Info</item>
     </string-array>
 </resources>

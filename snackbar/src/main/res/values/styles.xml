@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SnackBar" />
+
+    <style name="SnackBar.Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:maxHeight">80dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@color/sb__snack_bkgnd</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="SnackBar.Message">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/vertical_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/vertical_margin_bottom</item>
+        <item name="android:layout_toLeftOf">@id/snackButton</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="SnackBar.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/sb__button_selector</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginRight">@dimen/horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/vertical_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/vertical_margin_bottom</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:textColor">@color/sb__default_button_text_color</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:editable">false</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+</resources>
