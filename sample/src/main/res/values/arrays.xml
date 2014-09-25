@@ -17,13 +17,5 @@
         <item>Red</item>
         <item>Orange</item>
         <item>Yellow</item>
-        <item>Green</item>
-        <item>Blue</item>
-        <item>Purple</item>
-        <item>Pink</item>
-        <item>Default</item>
-        <item>Alert</item>
-        <item>Confirm</item>
-        <item>Info</item>
     </string-array>
 </resources>
