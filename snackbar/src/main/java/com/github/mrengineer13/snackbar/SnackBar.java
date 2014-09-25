@@ -66,6 +66,8 @@ public class SnackBar {
 
     private OnMessageClickListener mClickListener;
 
+	private OnVisibilityChangeListener mVisibilityChangeListener;
+
     private Handler mHandler;
 
     private float mPreviousY;
@@ -80,6 +82,12 @@ public class SnackBar {
 
         void onMessageClick(Parcelable token);
     }
+
+	public interface OnVisibilityChangeListener {
+
+		void onShow(int stackSize);
+		void onHide(int stackSize);
+	}
 
     public SnackBar(Activity activity) {
         mContext = activity.getApplicationContext();
@@ -136,6 +144,7 @@ public class SnackBar {
 
             @Override
             public void onAnimationEnd(Animation animation) {
+				sendOnHide();
                 if (!mSnacks.empty()) {
                     show(mSnacks.pop());
                 } else {
@@ -227,6 +236,7 @@ public class SnackBar {
     private void show(Snack message, boolean immediately) {
         mShowing = true;
         mContainer.setVisibility(View.VISIBLE);
+		sendOnShow();
         mCurrentSnack = message;
         mSnackMsg.setText(message.mMessage);
         if (message.mActionMessage != null) {
@@ -408,4 +418,18 @@ public class SnackBar {
             }
         };
     }
+
+	private void sendOnHide()
+	{
+		if (mVisibilityChangeListener != null) {
+			mVisibilityChangeListener.onHide(mSnacks.size());
+		}
+	}
+
+	private void sendOnShow()
+	{
+		if (mVisibilityChangeListener != null) {
+			mVisibilityChangeListener.onShow(mSnacks.size());
+		}
+	}
 }
