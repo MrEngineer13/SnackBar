@@ -504,4 +504,206 @@ public class SnackBar {
             mVisibilityChangeListener.onShow(mSnacks.size());
         }
     }
+
+    // ################################ BEGIN HELPER METHODS ################################
+
+
+    public static SnackBar showText(Activity activity, String message) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, null);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, Style.DEFAULT);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, int textColor) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, textColor, 0);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, Style actionStyle) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, actionStyle, 0);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, int textColor, int actionIcon) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, textColor, actionIcon, null);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, Style actionStyle, int actionIcon) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, actionStyle, actionIcon, null);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, int actionIcon, Parcelable token) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, Style.DEFAULT, actionIcon, token);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, int textColor, int actionIcon, Parcelable token) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, textColor, actionIcon, token, MED_SNACK);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, Style actionStyle, int actionIcon, Parcelable token) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, actionStyle, actionIcon, token, MED_SNACK);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, null, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, Style.DEFAULT, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, int textColor, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, textColor, 0, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, Style actionStyle, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, actionStyle, 0, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, int textColor, int actionIcon, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, textColor, actionIcon, null, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, Style actionStyle, int actionIcon, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, actionStyle, actionIcon, null, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, String message, String actionMessage, int actionIcon, Parcelable token, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(message, actionMessage, Style.DEFAULT, actionIcon, token, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), null);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), Style.DEFAULT);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, int textColor) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), textColor, 0);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, Style actionStyle) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), actionStyle, 0);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, int textColor,
+                                    int actionIcon) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), textColor, actionIcon, null);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, Style actionStyle,
+                                    int actionIcon) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), actionStyle, actionIcon, null);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, int actionIcon,
+                                    Parcelable token) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), Style.DEFAULT, actionIcon, token);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, int textColor,
+                                    int actionIcon, Parcelable token) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), textColor, actionIcon, token, MED_SNACK);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, Style actionStyle,
+                                    int actionIcon, Parcelable token) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), actionStyle, actionIcon, token, MED_SNACK);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), null, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), Style.DEFAULT, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, int textColor, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), textColor, 0, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, Style actionStyle, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), actionStyle, 0, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, int textColor, int actionIcon, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), textColor, actionIcon, null, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, Style actionStyle, int actionIcon, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), actionStyle, actionIcon, null, duration);
+        return bar;
+    }
+
+    public static SnackBar showText(Activity activity, int message, int actionMessage, int actionIcon, Parcelable token, short duration) {
+        SnackBar bar = new SnackBar(activity);
+        bar.show(activity.getString(message), activity.getString(actionMessage), Style.DEFAULT, actionIcon, token, duration);
+        return bar;
+    }
+
+
 }
