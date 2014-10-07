@@ -356,6 +356,10 @@ public class SnackBar {
         mClickListener = listener;
     }
 
+    public void setOnVisibilityChangeListener(OnVisibilityChangeListener listener) {
+		mVisibilityChangeListener = listener;
+	}
+
     public void clear(boolean animate) {
         mSnacks.clear();
         if (animate) mHideRunnable.run();
