@@ -174,6 +174,7 @@ public class SnackBar {
 
     public SnackBar show(String message) {
         show(message, null);
+        return this;
     }
 
     public SnackBar show(String message, String actionMessage) {

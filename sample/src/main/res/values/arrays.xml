@@ -19,4 +19,9 @@
         <item>Confirm</item>
         <item>Info</item>
     </string-array>
+
+    <string-array name="snack_string_types">
+        <item>String</item>
+        <item>Resources</item>
+    </string-array>
 </resources>
