@@ -487,12 +487,14 @@ public class SnackBar {
         }
     };
 
-    public void setOnClickListener(OnMessageClickListener listener) {
+    public SnackBar setOnClickListener(OnMessageClickListener listener) {
         mClickListener = listener;
+        return this;
     }
 
-    public void setOnVisibilityChangeListener(OnVisibilityChangeListener listener) {
+    public SnackBar setOnVisibilityChangeListener(OnVisibilityChangeListener listener) {
 		mVisibilityChangeListener = listener;
+        return this;
 	}
 
     public void clear(boolean animate) {
