@@ -296,7 +296,6 @@ public class SnackBar {
             mSnackBtn.setTextColor(getActionTextColor(message.mStyle));
         }
 
-        System.out.println("immediately " + immediately);
 
         if (immediately) {
             mInAnimationSet.setDuration(0);

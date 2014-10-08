@@ -32,7 +32,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:20.0.0'
-    //compile 'com.github.mrengineer13:snackbar:0.3.0'
+    //compile 'com.github.mrengineer13:snackbar:0.4.0'
     compile project(':snackbar')
     compile(name: 'aboutLibrary', ext: 'aar')
 }
