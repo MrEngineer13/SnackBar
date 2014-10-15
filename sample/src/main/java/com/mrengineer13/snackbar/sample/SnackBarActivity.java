@@ -41,7 +41,9 @@ public class SnackBarActivity extends ActionBarActivity
 
     static final int ACTION_BTN = 0, NO_ACTION_BTN = 1;
 
-    private Spinner mMsgLengthOptions, mDurationOptions, mActionBtnOptions, mActionBtnColorOptions;
+    static final int STRING_TYPE_STRING = 0, STRING_TYPE_RESOURCE = 1;
+
+    private Spinner mMsgLengthOptions, mDurationOptions, mActionBtnOptions, mActionBtnColorOptions, mStringTypeOptions;
 
     private SnackBar mSnackBar;
 
@@ -57,6 +59,7 @@ public class SnackBarActivity extends ActionBarActivity
         mDurationOptions = (Spinner) findViewById(R.id.snack_duration_selector);
         mActionBtnOptions = (Spinner) findViewById(R.id.action_btn_presence_selector);
         mActionBtnColorOptions = (Spinner) findViewById(R.id.action_btn_color);
+        mStringTypeOptions = (Spinner) findViewById(R.id.action_btn_string_type);
     }
 
 
@@ -75,7 +78,8 @@ public class SnackBarActivity extends ActionBarActivity
         int id = item.getItemId();
         if (id == R.id.action_about) {
             startActivity(AboutActivity.getAboutActivityIntent(this, "MrEngineer13", "https://github.com/MrEngineer13",
-                    "MrEngineer13@live.com", "@MrEngineer13", "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6PSQMTJYG5VJ",
+                    "MrEngineer13@live.com", "@MrEngineer13",
+                    "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K6PSQMTJYG5VJ",
                     true, "MrEngineer13", null));
             return true;
         }
@@ -84,16 +88,26 @@ public class SnackBarActivity extends ActionBarActivity
 
     public void onCreateClicked(View view) {
         String message = "";
+        int messageRes = -1;
         short duration = 0;
         SnackBar.Style style;
 
+        int selectedStringType = mStringTypeOptions.getSelectedItemPosition();
         int selectedMessageLength = mMsgLengthOptions.getSelectedItemPosition();
         switch (selectedMessageLength) {
             case SHORT_MSG:
-                message = "This is a one-line message.";
+                if (selectedStringType == STRING_TYPE_STRING) {
+                    message = "This is a one-line message.";
+                } else {
+                    messageRes = R.string.short_message;
+                }
                 break;
             case LONG_MSG:
-                message = "This message is a lot longer, it should stretch at least two lines. ";
+                if (selectedStringType == STRING_TYPE_STRING) {
+                    message = "This message is a lot longer, it should stretch at least two lines. ";
+                } else {
+                    messageRes = R.string.long_message;
+                }
                 break;
         }
 
@@ -130,10 +144,18 @@ public class SnackBarActivity extends ActionBarActivity
         int selectedActionBtnExistance = mActionBtnOptions.getSelectedItemPosition();
         switch (selectedActionBtnExistance) {
             case ACTION_BTN:
-                mSnackBar.show(message, "Action", style, duration);
+                if (messageRes <= 0) {
+                    mSnackBar.show(message, "Action", style, duration);
+                } else {
+                    mSnackBar.show(messageRes, R.string.action, style, duration);
+                }
                 break;
             case NO_ACTION_BTN:
-                mSnackBar.show(message, duration);
+                if (messageRes <= 0) {
+                    mSnackBar.show(message, duration);
+                } else {
+                    mSnackBar.show(messageRes, R.string.action, style, duration);
+                }
                 break;
         }
 

@@ -20,4 +20,9 @@
         <item>Ice cream</item>
     </string-array>
 
+    <string name="long_message">This message is a lot longer, it should stretch at least two lines and is from
+        the resources.</string>
+    <string name="short_message">This is a one-line message and is from the resources.</string>
+    <string name="action">Action</string>
+
 </resources>

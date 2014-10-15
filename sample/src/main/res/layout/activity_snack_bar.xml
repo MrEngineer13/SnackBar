@@ -73,6 +73,19 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="String Type" />
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/action_btn_string_type"
+            android:entries="@array/snack_string_types"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
