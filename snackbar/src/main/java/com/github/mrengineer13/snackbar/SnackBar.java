@@ -493,9 +493,9 @@ public class SnackBar {
     }
 
     public SnackBar setOnVisibilityChangeListener(OnVisibilityChangeListener listener) {
-		mVisibilityChangeListener = listener;
+        mVisibilityChangeListener = listener;
         return this;
-	}
+    }
 
     public void clear(boolean animate) {
         mSnacks.clear();
@@ -546,7 +546,7 @@ public class SnackBar {
         return mShowing;
     }
 
-    public enum Style{
+    public enum Style {
         DEFAULT,
         ALERT,
         CONFIRM,
@@ -629,15 +629,13 @@ public class SnackBar {
         };
     }
 
-    private void sendOnHide()
-    {
+    private void sendOnHide() {
         if (mVisibilityChangeListener != null) {
             mVisibilityChangeListener.onHide(mSnacks.size());
         }
     }
 
-    private void sendOnShow()
-    {
+    private void sendOnShow() {
         if (mVisibilityChangeListener != null) {
             mVisibilityChangeListener.onShow(mSnacks.size());
         }
