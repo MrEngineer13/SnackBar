@@ -257,6 +257,11 @@ public class SnackBar {
         int color = mContext.getResources().getColor(textColor);
         Snack m = new Snack(message, (actionMessage != null ? actionMessage.toUpperCase() : null),
                 actionIcon, token, duration, color);
+        if (isShowing()) {
+            mSnacks.push(m);
+        } else {
+            show(m);
+        }
         return this;
     }
 
