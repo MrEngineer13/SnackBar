@@ -154,7 +154,7 @@ public class SnackBarActivity extends ActionBarActivity
                 if (messageRes <= 0) {
                     mSnackBar.show(message, duration);
                 } else {
-                    mSnackBar.show(messageRes, R.string.action, style, duration);
+                    mSnackBar.show(messageRes, duration);
                 }
                 break;
         }
