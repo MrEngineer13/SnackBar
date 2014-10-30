@@ -317,7 +317,7 @@ public class SnackBar {
     }
 
     public SnackBar show(int message, short duration) {
-        show(message, duration);
+        show(message, 0, duration);
         return this;
     }
 
