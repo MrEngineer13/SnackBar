@@ -13,6 +13,7 @@
     <Button
         android:id="@id/snackButton"
         style="@style/SnackBar.Button"
-        tools:text="Action"/>
+        tools:text="Action"
+        android:focusable="false" />
 
 </RelativeLayout>
