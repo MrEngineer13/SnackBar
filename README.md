@@ -41,6 +41,9 @@ Just add the following to your `build.gradle`.
 
   
 ## Using this library?
+
+[Score It][1]
+
 If you're using this library in one of your projects just [send me a tweet](https://twitter.com/MrEngineer13) and I'll add your project to the list.
   
 # Contribution
@@ -52,3 +55,4 @@ If you've implemented a bug fix or new feature, just create a pull request.
 
 If you have a bug to report a feature to request or have other questions, [file an issue](https://github.com/MrEngineer13/SnackBar/issues/new). I'll try to answer as soon as I can.
     
+[1]:https://play.google.com/store/apps/details?id=com.sbgapps.scoreit
