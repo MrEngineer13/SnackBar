@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/snackContainer"
@@ -14,5 +14,4 @@
         android:id="@id/snackButton"
         style="@style/SnackBar.Button"
         tools:text="Action"/>
-
-</RelativeLayout>
+</LinearLayout>
