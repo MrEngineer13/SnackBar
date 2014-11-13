@@ -57,7 +57,7 @@ public class SnackBar {
 
     private TextView mSnackMsg;
 
-    private Button mSnackBtn;
+    private TextView mSnackBtn;
 
     private Stack<Snack> mSnacks = new Stack<Snack>();
 
@@ -108,7 +108,7 @@ public class SnackBar {
         mContainer = v.findViewById(R.id.snackContainer);
         mContainer.setVisibility(View.GONE);
         mSnackMsg = (TextView) v.findViewById(R.id.snackMessage);
-        mSnackBtn = (Button) v.findViewById(R.id.snackButton);
+        mSnackBtn = (TextView) v.findViewById(R.id.snackButton);
         mSnackBtn.setOnClickListener(mButtonListener);
 
         mInAnimationSet = new AnimationSet(false);

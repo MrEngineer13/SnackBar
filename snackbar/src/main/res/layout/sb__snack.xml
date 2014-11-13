@@ -10,10 +10,8 @@
         style="@style/SnackBar.Message"
         tools:text="Sample message"/>
 
-    <Button
+    <TextView
         android:id="@id/snackButton"
         style="@style/SnackBar.Button"
-        tools:text="Action"
-        android:focusable="false" />
-
+        tools:text="Action"/>
 </LinearLayout>
