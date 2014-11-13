@@ -30,7 +30,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Stack;
@@ -519,7 +518,9 @@ public class SnackBar {
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
-            mContainer.startAnimation(mOutAnimationSet);
+            if (View.VISIBLE == mContainer.getVisibility()) {
+                mContainer.startAnimation(mOutAnimationSet);
+            }
         }
     };
 
