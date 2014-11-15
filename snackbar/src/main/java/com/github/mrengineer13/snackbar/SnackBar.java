@@ -30,7 +30,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Stack;
@@ -57,7 +56,7 @@ public class SnackBar {
 
     private TextView mSnackMsg;
 
-    private Button mSnackBtn;
+    private TextView mSnackBtn;
 
     private Stack<Snack> mSnacks = new Stack<Snack>();
 
@@ -108,7 +107,7 @@ public class SnackBar {
         mContainer = v.findViewById(R.id.snackContainer);
         mContainer.setVisibility(View.GONE);
         mSnackMsg = (TextView) v.findViewById(R.id.snackMessage);
-        mSnackBtn = (Button) v.findViewById(R.id.snackButton);
+        mSnackBtn = (TextView) v.findViewById(R.id.snackButton);
         mSnackBtn.setOnClickListener(mButtonListener);
 
         mInAnimationSet = new AnimationSet(false);
@@ -254,7 +253,7 @@ public class SnackBar {
     }
 
     public SnackBar show(String message, String actionMessage, int textColor, int actionIcon, Parcelable token, short duration) {
-        int color = mContext.getResources().getColor(textColor);
+        ColorStateList color = mContext.getResources().getColorStateList(textColor);
         Snack m = new Snack(message, (actionMessage != null ? actionMessage.toUpperCase() : null),
                 actionIcon, token, duration, color);
         if (isShowing()) {
@@ -359,7 +358,7 @@ public class SnackBar {
 
     public SnackBar show(int messageResId, int actionMessageResId, int textColor, int actionIcon, Parcelable token,
                          short duration) {
-        int color = mContext.getResources().getColor(textColor);
+        ColorStateList color = mContext.getResources().getColorStateList(textColor);
         String message = mContext.getString(messageResId);
         String actionMessage = null;
         if (actionMessageResId > 0) {
@@ -436,7 +435,7 @@ public class SnackBar {
             mSnackBtn.setVisibility(View.GONE);
         }
 
-        if (message.mBtnTextColor != 0) {
+        if (message.mBtnTextColor != null) {
             mSnackBtn.setTextColor(message.mBtnTextColor);
         } else {
             mSnackBtn.setTextColor(getActionTextColor(message.mStyle));
@@ -519,7 +518,9 @@ public class SnackBar {
     private final Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
-            mContainer.startAnimation(mOutAnimationSet);
+            if (View.VISIBLE == mContainer.getVisibility()) {
+                mContainer.startAnimation(mOutAnimationSet);
+            }
         }
     };
 
@@ -575,12 +576,12 @@ public class SnackBar {
 
         final short mDuration;
 
-        final int mBtnTextColor;
+        final ColorStateList mBtnTextColor;
 
         final Style mStyle;
 
         public Snack(String message, String actionMessage, int actionIcon,
-                     Parcelable token, short duration, int textColor) {
+                     Parcelable token, short duration, ColorStateList textColor) {
             mMessage = message;
             mActionMessage = actionMessage;
             mActionIcon = actionIcon;
@@ -598,7 +599,7 @@ public class SnackBar {
             mToken = token;
             mDuration = duration;
             mStyle = style;
-            mBtnTextColor = 0;
+            mBtnTextColor = null;
         }
 
         // reads data from parcel
@@ -608,7 +609,7 @@ public class SnackBar {
             mActionIcon = p.readInt();
             mToken = p.readParcelable(p.getClass().getClassLoader());
             mDuration = (short) p.readInt();
-            mBtnTextColor = p.readInt();
+            mBtnTextColor = p.readParcelable(p.getClass().getClassLoader());
             mStyle = Style.valueOf(p.readString());
         }
 
@@ -619,7 +620,7 @@ public class SnackBar {
             out.writeInt(mActionIcon);
             out.writeParcelable(mToken, 0);
             out.writeInt((int) mDuration);
-            out.writeInt(mBtnTextColor);
+            out.writeParcelable(mBtnTextColor, 0);
             out.writeString(mStyle.name());
         }
 
@@ -650,6 +651,4 @@ public class SnackBar {
             mVisibilityChangeListener.onShow(mSnacks.size());
         }
     }
-
-
 }
