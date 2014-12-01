@@ -22,7 +22,7 @@ class Snack implements Parcelable {
 
     final Style mStyle;
 
-    public Snack(String message, String actionMessage, int actionIcon,
+    Snack(String message, String actionMessage, int actionIcon,
                  Parcelable token, short duration, ColorStateList textColor) {
         mMessage = message;
         mActionMessage = actionMessage;
@@ -33,7 +33,7 @@ class Snack implements Parcelable {
         mStyle = Style.DEFAULT;
     }
 
-    public Snack(String message, String actionMessage, int actionIcon,
+    Snack(String message, String actionMessage, int actionIcon,
                  Parcelable token, short duration, Style style) {
         mMessage = message;
         mActionMessage = actionMessage;
@@ -45,7 +45,7 @@ class Snack implements Parcelable {
     }
 
     // reads data from parcel
-    public Snack(Parcel p) {
+    Snack(Parcel p) {
         mMessage = p.readString();
         mActionMessage = p.readString();
         mActionIcon = p.readInt();

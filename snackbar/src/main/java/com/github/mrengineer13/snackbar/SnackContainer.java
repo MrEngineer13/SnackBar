@@ -24,15 +24,17 @@ class SnackContainer extends FrameLayout {
     private static final int ANIMATION_DURATION = 300;
 
     private static final String SAVED_MSGS = "SAVED_MSGS";
+    private static final String SAVED_CURR_MSG = "SAVED_CURR_MSG";
 
     private Stack<SnackHolder> mSnacks = new Stack<SnackHolder>();
+    private SnackHolder mCurrentSnackHolder;
 
     private AnimationSet mOutAnimationSet;
     private AnimationSet mInAnimationSet;
 
     private float mPreviousY;
 
-    public SnackContainer(ViewGroup container) {
+    SnackContainer(ViewGroup container) {
         super(container.getContext());
 
         setId(R.id.snackContainer);
@@ -76,9 +78,10 @@ class SnackContainer extends FrameLayout {
             public void onAnimationEnd(Animation animation) {
                 removeAllViews();
 
-                if (!isEmpty()) {
-                    sendOnHide(mSnacks.peek());
-                    mSnacks.pop(); // Remove snack which just showed.
+                if (mSnacks.contains(mCurrentSnackHolder)) {
+                    sendOnHide(mCurrentSnackHolder);
+                    mSnacks.remove(mCurrentSnackHolder);
+                    mCurrentSnackHolder = null;
                 }
 
                 if (!isEmpty()) {
@@ -147,12 +150,18 @@ class SnackContainer extends FrameLayout {
             ((ViewGroup) snackView.getParent()).removeView(snackView);
         }
 
-        SnackHolder holder = new SnackHolder(snack, snackView, listener, immediately);
+        SnackHolder holder = new SnackHolder(snack, snackView, listener);
         mSnacks.push(holder);
-        if (mSnacks.size() == 1) showSnack(holder);
+        if (mSnacks.size() == 1) showSnack(holder, immediately);
     }
 
     private void showSnack(final SnackHolder holder) {
+        showSnack(holder, false);
+    }
+
+    private void showSnack(final SnackHolder holder, boolean showImmediately) {
+        mCurrentSnackHolder = holder;
+
         setVisibility(View.VISIBLE);
 
         sendOnShow(holder);
@@ -176,7 +185,7 @@ class SnackContainer extends FrameLayout {
         }
 
 
-        if (holder.showImmediately) {
+        if (showImmediately) {
             mInAnimationSet.setDuration(0);
         } else {
             mInAnimationSet.setDuration(ANIMATION_DURATION);
@@ -264,14 +273,23 @@ class SnackContainer extends FrameLayout {
      */
 
     public void restoreState(Bundle state, View v) {
+        Snack currentSnack = state.getParcelable(SAVED_CURR_MSG);
+        if (currentSnack != null) {
+            showSnack(currentSnack, v, null, true);
+        }
+
         Parcelable[] messages = state.getParcelableArray(SAVED_MSGS);
-        for (Parcelable snack : messages) {
-            showSnack((Snack) snack, v, null, true);
+        for (Parcelable message : messages) {
+            showSnack((Snack) message, v, null, false);
         }
     }
 
     public Bundle saveState() {
         Bundle outState = new Bundle();
+        if (mCurrentSnackHolder != null) {
+            outState.putParcelable(SAVED_CURR_MSG, mCurrentSnackHolder.snack);
+            mSnacks.remove(mCurrentSnackHolder);
+        }
 
         final int count = mSnacks.size();
         final Snack[] snacks = new Snack[count];
@@ -291,16 +309,14 @@ class SnackContainer extends FrameLayout {
 
         final Snack snack;
         final OnVisibilityChangeListener visListener;
-        final boolean showImmediately;
 
-        private SnackHolder(Snack snack, View snackView, OnVisibilityChangeListener listener, boolean showImmediately) {
+        private SnackHolder(Snack snack, View snackView, OnVisibilityChangeListener listener) {
             this.snackView = snackView;
             button = (TextView) snackView.findViewById(R.id.snackButton);
             messageView = (TextView) snackView.findViewById(R.id.snackMessage);
 
             this.snack = snack;
             visListener = listener;
-            this.showImmediately = showImmediately;
         }
     }
 }
