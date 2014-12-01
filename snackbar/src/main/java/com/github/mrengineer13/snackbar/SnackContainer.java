@@ -17,17 +17,16 @@ import android.widget.TextView;
 import com.github.mrengineer13.snackbar.SnackBar.OnVisibilityChangeListener;
 import com.github.mrengineer13.snackbar.SnackBar.Style;
 
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
 class SnackContainer extends FrameLayout {
 
     private static final int ANIMATION_DURATION = 300;
 
     private static final String SAVED_MSGS = "SAVED_MSGS";
-    private static final String SAVED_CURR_MSG = "SAVED_CURR_MSG";
 
-    private Stack<SnackHolder> mSnacks = new Stack<SnackHolder>();
-    private SnackHolder mCurrentSnackHolder;
+    private Queue<SnackHolder> mSnacks = new LinkedList<SnackHolder>();
 
     private AnimationSet mOutAnimationSet;
     private AnimationSet mInAnimationSet;
@@ -78,10 +77,8 @@ class SnackContainer extends FrameLayout {
             public void onAnimationEnd(Animation animation) {
                 removeAllViews();
 
-                if (mSnacks.contains(mCurrentSnackHolder)) {
-                    sendOnHide(mCurrentSnackHolder);
-                    mSnacks.remove(mCurrentSnackHolder);
-                    mCurrentSnackHolder = null;
+                if (!mSnacks.isEmpty()) {
+                    sendOnHide(mSnacks.poll());
                 }
 
                 if (!isEmpty()) {
@@ -119,12 +116,13 @@ class SnackContainer extends FrameLayout {
         return mSnacks.peek().snack;
     }
 
-    public Snack popSnack() {
-        return mSnacks.pop().snack;
+    public Snack pollSnack() {
+        return mSnacks.poll().snack;
     }
 
     public void clearSnacks(boolean animate) {
         mSnacks.clear();
+        if (animate) mHideRunnable.run();
     }
 
     /*
@@ -132,7 +130,7 @@ class SnackContainer extends FrameLayout {
      */
 
     public boolean isShowing() {
-        return !mSnacks.empty();
+        return !mSnacks.isEmpty();
     }
 
     public void hide() {
@@ -151,7 +149,7 @@ class SnackContainer extends FrameLayout {
         }
 
         SnackHolder holder = new SnackHolder(snack, snackView, listener);
-        mSnacks.push(holder);
+        mSnacks.offer(holder);
         if (mSnacks.size() == 1) showSnack(holder, immediately);
     }
 
@@ -160,7 +158,6 @@ class SnackContainer extends FrameLayout {
     }
 
     private void showSnack(final SnackHolder holder, boolean showImmediately) {
-        mCurrentSnackHolder = holder;
 
         setVisibility(View.VISIBLE);
 
@@ -214,7 +211,7 @@ class SnackContainer extends FrameLayout {
                                 sendOnHide(holder);
                                 startAnimation(mOutAnimationSet);
 
-                                if (!mSnacks.empty()) {
+                                if (!mSnacks.isEmpty()) {
                                     mSnacks.clear();
                                 }
                             }
@@ -273,23 +270,17 @@ class SnackContainer extends FrameLayout {
      */
 
     public void restoreState(Bundle state, View v) {
-        Snack currentSnack = state.getParcelable(SAVED_CURR_MSG);
-        if (currentSnack != null) {
-            showSnack(currentSnack, v, null, true);
-        }
-
         Parcelable[] messages = state.getParcelableArray(SAVED_MSGS);
+        boolean showImmediately = true;
+
         for (Parcelable message : messages) {
-            showSnack((Snack) message, v, null, false);
+            showSnack((Snack) message, v, null, showImmediately);
+            showImmediately = false;
         }
     }
 
     public Bundle saveState() {
         Bundle outState = new Bundle();
-        if (mCurrentSnackHolder != null) {
-            outState.putParcelable(SAVED_CURR_MSG, mCurrentSnackHolder.snack);
-            mSnacks.remove(mCurrentSnackHolder);
-        }
 
         final int count = mSnacks.size();
         final Snack[] snacks = new Snack[count];
