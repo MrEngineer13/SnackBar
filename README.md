@@ -24,7 +24,7 @@
 Just add the following to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.mrengineer13:snackbar:0.4.0'
+        compile 'com.github.mrengineer13:snackbar:0.4.1'
     }
 
 ###Eclipse
@@ -35,10 +35,13 @@ Just add the following to your `build.gradle`.
         
 ## 2. Show a message
 
-#### Create SnackBar
+#### Create SnackBar in Activity
     SnackBar mSnackBar = new SnackBar(this);
     mSnackBar.show("This library is awesome!");
 
+#### Create SnackBar in Fragment
+    SnackBar mSnackBar = new SnackBar(getActivity().getApplicationContext(), root);
+    mSnackBar.show("This library is awesome!");
   
 ## Using this library?
 

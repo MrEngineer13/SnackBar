@@ -69,7 +69,8 @@ public class SnackBar {
 
     public SnackBar(Context context, View v) {
         mContext = context;
-        init((ViewGroup) v.getParent(), v);
+        View layout = View.inflate(context, R.layout.sb__snack, (ViewGroup) v.getParent());
+        init((ViewGroup) v, layout);
     }
 
     private void init(ViewGroup container, View v) {

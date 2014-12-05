@@ -52,9 +52,6 @@ public class SnackBarActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snack_bar);
 
-        mSnackBar = new SnackBar(this);
-        mSnackBar.setOnClickListener(this);
-
         mMsgLengthOptions = (Spinner) findViewById(R.id.message_length_selector);
         mDurationOptions = (Spinner) findViewById(R.id.snack_duration_selector);
         mActionBtnOptions = (Spinner) findViewById(R.id.action_btn_presence_selector);
@@ -87,6 +84,9 @@ public class SnackBarActivity extends ActionBarActivity
     }
 
     public void onCreateClicked(View view) {
+        mSnackBar = new SnackBar(this);
+        mSnackBar.setOnClickListener(this);
+
         String message = "";
         int messageRes = -1;
         short duration = 0;

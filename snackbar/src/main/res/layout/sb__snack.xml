@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/SnackBar.Container">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <TextView
-        android:id="@id/snackMessage"
-        style="@style/SnackBar.Message"
-        tools:text="Sample message"/>
+    <LinearLayout
+        style="@style/SnackBar.Container">
 
-    <TextView
-        android:id="@id/snackButton"
-        style="@style/SnackBar.Button"
-        tools:text="Action"/>
-</LinearLayout>
+        <TextView
+            android:id="@id/snackMessage"
+            style="@style/SnackBar.Message"
+            tools:text="Sample message"/>
+
+        <TextView
+            android:id="@id/snackButton"
+            style="@style/SnackBar.Button"
+            tools:text="Action"/>
+    </LinearLayout>
+</RelativeLayout>
