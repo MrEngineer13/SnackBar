@@ -84,9 +84,6 @@ public class SnackBarActivity extends ActionBarActivity
     }
 
     public void onCreateClicked(View view) {
-        mSnackBar = new SnackBar(this);
-        mSnackBar.setOnClickListener(this);
-
         String message = "";
         int messageRes = -1;
         short duration = 0;
@@ -145,17 +142,36 @@ public class SnackBarActivity extends ActionBarActivity
         switch (selectedActionBtnExistance) {
             case ACTION_BTN:
                 if (messageRes <= 0) {
-                    mSnackBar.show(message, "Action", style, duration);
+                    mSnackBar = new SnackBar.Builder(this)
+                            .withOnClickListener(this)
+                            .withMessage(message)
+                            .withActionMessage("Action")
+                            .withStyle(style)
+                            .withDuration(duration)
+                            .show();
                 } else {
-                    mSnackBar.show(messageRes, R.string.action, style, duration);
+                    mSnackBar = new SnackBar.Builder(this)
+                            .withOnClickListener(this)
+                            .withMessageId(messageRes)
+                            .withActionMessageId(R.string.action)
+                            .withStyle(style)
+                            .withDuration(duration)
+                            .show();
                 }
                 break;
             case NO_ACTION_BTN:
                 if (messageRes <= 0) {
-                    mSnackBar.show(message, duration);
+                    mSnackBar = new SnackBar.Builder(this)
+                            .withMessage(message)
+                            .withDuration(duration)
+                            .show();
                 } else {
-                    mSnackBar.show(messageRes, duration);
+                    mSnackBar = new SnackBar.Builder(this)
+                            .withMessageId(messageRes)
+                            .withDuration(duration)
+                            .show();
                 }
+
                 break;
         }
 

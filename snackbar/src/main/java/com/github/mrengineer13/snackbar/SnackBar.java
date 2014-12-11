@@ -88,213 +88,105 @@ public class SnackBar {
         mSnackBtn.setOnClickListener(mButtonListener);
     }
 
-    public static SnackBar create(Activity activity) {
-        return new SnackBar(activity);
-    }
+    public static class Builder{
 
-    public static SnackBar create(Context context, View view) {
-        return new SnackBar(context, view);
-    }
+        private SnackBar mSnackBar;
 
-    public SnackBar show(String message) {
-        show(message, null);
-        return this;
-    }
+        private Context mContext;
+        private String mMessage;
+        private String mActionMessage;
+        private int mActionIcon = 0;
+        private Style mStyle = Style.DEFAULT;
+        private Parcelable mToken;
+        private short mDuration =  MED_SNACK;
+        private ColorStateList mTextColor;
 
-    public SnackBar show(String message, String actionMessage) {
-        show(message, actionMessage, Style.DEFAULT);
-        return this;
-    }
 
-    public SnackBar show(String message, String actionMessage, int textColor) {
-        show(message, actionMessage, textColor, 0);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, Style actionStyle) {
-        show(message, actionMessage, actionStyle, 0);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, int textColor, int actionIcon) {
-        show(message, actionMessage, textColor, actionIcon, null);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, Style actionStyle, int actionIcon) {
-        show(message, actionMessage, actionStyle, actionIcon, null);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, int actionIcon, Parcelable token) {
-        show(message, actionMessage, Style.DEFAULT, actionIcon, token);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, int textColor, int actionIcon, Parcelable token) {
-        show(message, actionMessage, textColor, actionIcon, token, MED_SNACK);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, Style actionStyle, int actionIcon, Parcelable token) {
-        show(message, actionMessage, actionStyle, actionIcon, token, MED_SNACK);
-        return this;
-    }
-
-    public SnackBar show(String message, short duration) {
-        show(message, null, duration);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, short duration) {
-        show(message, actionMessage, Style.DEFAULT, duration);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, int textColor, short duration) {
-        show(message, actionMessage, textColor, 0, duration);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, Style actionStyle, short duration) {
-        show(message, actionMessage, actionStyle, 0, duration);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, int textColor, int actionIcon, short duration) {
-        show(message, actionMessage, textColor, actionIcon, null, duration);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, Style actionStyle, int actionIcon, short duration) {
-        show(message, actionMessage, actionStyle, actionIcon, null, duration);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, int actionIcon, Parcelable token, short duration) {
-        show(message, actionMessage, Style.DEFAULT, actionIcon, token, duration);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, int textColor, int actionIcon, Parcelable token, short duration) {
-        ColorStateList color = mContext.getResources().getColorStateList(textColor);
-        Snack m = new Snack(message, (actionMessage != null ? actionMessage.toUpperCase() : null),
-                actionIcon, token, duration, color);
-        mSnackContainer.showSnack(m, mParentView, mVisibilityChangeListener);
-        return this;
-    }
-
-    public SnackBar show(String message, String actionMessage, Style style, int actionIcon, Parcelable token, short duration) {
-        Snack m = new Snack(message, (actionMessage != null ? actionMessage.toUpperCase() : null), actionIcon, token, duration, style);
-        mSnackContainer.showSnack(m, mParentView, mVisibilityChangeListener);
-        return this;
-    }
-
-    //////////////////////////////////////////////////////////////////////////////////////
-
-    public SnackBar show(int message) {
-        show(message, -1);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage) {
-        show(message, actionMessage, Style.DEFAULT);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, int textColor) {
-        show(message, actionMessage, textColor, 0);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, Style actionStyle) {
-        show(message, actionMessage, actionStyle, 0);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, int textColor, int actionIcon) {
-        show(message, actionMessage, textColor, actionIcon, null);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, Style actionStyle, int actionIcon) {
-        show(message, actionMessage, actionStyle, actionIcon, null);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, int actionIcon, Parcelable token) {
-        show(message, actionMessage, Style.DEFAULT, actionIcon, token);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, int textColor, int actionIcon, Parcelable token) {
-        show(message, actionMessage, textColor, actionIcon, token, MED_SNACK);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, Style actionStyle, int actionIcon, Parcelable token) {
-        show(message, actionMessage, actionStyle, actionIcon, token, MED_SNACK);
-        return this;
-    }
-
-    public SnackBar show(int message, short duration) {
-        show(message, 0, duration);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, short duration) {
-        show(message, actionMessage, Style.DEFAULT, duration);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, int textColor, short duration) {
-        show(message, actionMessage, textColor, 0, duration);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, Style actionStyle, short duration) {
-        show(message, actionMessage, actionStyle, 0, duration);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, int textColor, int actionIcon, short duration) {
-        show(message, actionMessage, textColor, actionIcon, null, duration);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, Style actionStyle, int actionIcon, short duration) {
-        show(message, actionMessage, actionStyle, actionIcon, null, duration);
-        return this;
-    }
-
-    public SnackBar show(int message, int actionMessage, int actionIcon, Parcelable token, short duration) {
-        show(message, actionMessage, Style.DEFAULT, actionIcon, token, duration);
-        return this;
-    }
-
-    public SnackBar show(int messageResId, int actionMessageResId, int textColor, int actionIcon, Parcelable token,
-                         short duration) {
-        ColorStateList color = mContext.getResources().getColorStateList(textColor);
-        String message = mContext.getString(messageResId);
-        String actionMessage = null;
-        if (actionMessageResId > 0) {
-            actionMessage = mContext.getString(actionMessageResId);
+        public Builder(Activity activity){
+            mContext = activity.getApplicationContext();
+            mSnackBar = new SnackBar(activity);
         }
-        Snack m = new Snack(message, (actionMessage != null ? actionMessage.toUpperCase() : null),
-                actionIcon, token, duration, color);
-        mSnackContainer.showSnack(m, mParentView, mVisibilityChangeListener);
-        return this;
+
+        public Builder(Context context, View v){
+            mContext = context;
+            mSnackBar = new SnackBar(context, v);
+        }
+
+        public Builder withMessage(String message){
+            mMessage = message;
+            return this;
+        }
+
+        public Builder withMessageId(int messageId){
+            mMessage = mContext.getString(messageId);
+            return this;
+        }
+
+        public Builder withActionMessage(String actionMessage){
+            mActionMessage = actionMessage;
+            return this;
+        }
+
+        public Builder withActionMessageId(int actionMessageResId){
+            if (actionMessageResId > 0) {
+                mActionMessage = mContext.getString(actionMessageResId);
+            }
+
+            return this;
+        }
+
+        public Builder withActionIconId(int id){
+            mActionIcon = id;
+            return this;
+        }
+
+        public Builder withStyle(Style style){
+            mStyle = style;
+            return this;
+        }
+
+        public Builder withToken(Parcelable token){
+            mToken = token;
+            return this;
+        }
+
+        public Builder withDuration(Short duration){
+            mDuration = duration;
+            return this;
+        }
+
+        public Builder withTextColorId(int colorId){
+            ColorStateList color = mContext.getResources().getColorStateList(colorId);
+            mTextColor = color;
+            return this;
+        }
+
+        public Builder withOnClickListener(OnMessageClickListener onClickListener){
+            mSnackBar.setOnClickListener(onClickListener);
+            return this;
+        }
+
+        public Builder withVisibilityChangeListener(OnVisibilityChangeListener visibilityChangeListener){
+            mSnackBar.setOnVisibilityChangeListener(visibilityChangeListener);
+            return this;
+        }
+
+        public SnackBar show(){
+            Snack message;
+            if (mTextColor == null){
+                message = new Snack(mMessage, (mActionMessage != null ? mActionMessage.toUpperCase() : null), mActionIcon, mToken, mDuration, mStyle);
+            } else {
+                message = new Snack(mMessage, (mActionMessage != null ? mActionMessage.toUpperCase() : null), mActionIcon, mToken, mDuration, mTextColor);
+            }
+
+            mSnackBar.showMessage(message);
+
+            return mSnackBar;
+        }
     }
 
-    public SnackBar show(int messageResId, int actionMessageResId, Style style, int actionIcon, Parcelable token, short duration) {
-        String message = mContext.getString(messageResId);
-        String actionMessage = null;
-        if (actionMessageResId > 0) {
-            actionMessage = mContext.getString(actionMessageResId);
-        }
-        Snack m = new Snack(message, (actionMessage != null ? actionMessage.toUpperCase() : null), actionIcon, token, duration, style);
-        mSnackContainer.showSnack(m, mParentView, mVisibilityChangeListener);
-        return this;
+    private void showMessage(Snack message){
+        mSnackContainer.showSnack(message, mParentView, mVisibilityChangeListener);
     }
 
     public int getHeight() {

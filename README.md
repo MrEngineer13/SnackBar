@@ -24,7 +24,7 @@
 Just add the following to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.mrengineer13:snackbar:0.4.2'
+        compile 'com.github.mrengineer13:snackbar:0.5.0'
     }
 
 ###Eclipse
@@ -35,17 +35,40 @@ Just add the following to your `build.gradle`.
         
 ## 2. Show a message
 
-#### Create SnackBar in Activity
-    SnackBar mSnackBar = new SnackBar(this);
-    mSnackBar.show("This library is awesome!");
+#### Build SnackBar in Activity
+    new SnackBar.Builder(this)
+        .withOnClickListener(this)
+        .withMessage("This library is awesome!") // OR
+        .withMessageId(messageId)
 
-#### Create SnackBar in Fragment
-    SnackBar mSnackBar = new SnackBar(getActivity().getApplicationContext(), root);
-    mSnackBar.show("This library is awesome!");
+        .withActionMessage("Action") // OR
+        .withActionMessageId(actionMsgId)
+
+        .withTextColorId(textColorId)
+        .withVisibilityChangeListener(this)
+        .withStyle(style)
+        .withDuration(duration)
+        .show();
+
+#### Build SnackBar in Fragment
+    new SnackBar.Builder(getActivity().getApplicationContext(), root)
+        .withOnClickListener(this)
+        .withMessage("This library is awesome!") // OR
+        .withMessageId(messageId)
+
+        .withActionMessage("Action") // OR
+        .withActionMessageId(actionMsgId)
+
+        .withTextColorId(textColorId)
+        .withVisibilityChangeListener(this)
+        .withStyle(style)
+        .withDuration(duration)
+        .show();
   
 ## Using this library?
 
-[Score It][1]
+[Score It][1],
+[Lotería Navidad 2014][2]
 
 If you're using this library in one of your projects just [send me a tweet](https://twitter.com/MrEngineer13) and I'll add your project to the list.
   
@@ -59,3 +82,4 @@ If you've implemented a bug fix or new feature, just create a pull request.
 If you have a bug to report a feature to request or have other questions, [file an issue](https://github.com/MrEngineer13/SnackBar/issues/new). I'll try to answer as soon as I can.
     
 [1]:https://play.google.com/store/apps/details?id=com.sbgapps.scoreit
+[2]:https://play.google.com/store/apps/details?id=com.moya.garcia.loterianavidad&hl=es
