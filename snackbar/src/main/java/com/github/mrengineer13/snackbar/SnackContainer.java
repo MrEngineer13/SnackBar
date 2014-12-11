@@ -38,7 +38,7 @@ class SnackContainer extends FrameLayout {
 
         setId(R.id.snackContainer);
         setVisibility(View.GONE);
-        container.addView(this);
+        container.addView(this, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
         mInAnimationSet = new AnimationSet(false);
 
