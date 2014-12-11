@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -69,8 +70,10 @@ public class SnackBar {
 
     public SnackBar(Context context, View v) {
         mContext = context;
-        View layout = View.inflate(context, R.layout.sb__snack, (ViewGroup) v.getParent());
-        init((ViewGroup) v, layout);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.sb__snack_container, ((ViewGroup) v));
+        View snackLayout  = inflater.inflate(R.layout.sb__snack, ((ViewGroup) v), false);
+        init((ViewGroup) v, snackLayout);
     }
 
     private void init(ViewGroup container, View v) {

@@ -166,14 +166,14 @@ public class SnackBarActivity extends ActionBarActivity
     protected void onSaveInstanceState(Bundle saveState) {
         super.onSaveInstanceState(saveState);
         // use this to save your snacks for later
-        saveState.putBundle(SAVED_SNACKBAR, mSnackBar.onSaveInstanceState());
+        //saveState.putBundle(SAVED_SNACKBAR, mSnackBar.onSaveInstanceState());
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle loadState) {
         super.onRestoreInstanceState(loadState);
         // use this to load your snacks for later
-        mSnackBar.onRestoreInstanceState(loadState.getBundle(SAVED_SNACKBAR));
+        //mSnackBar.onRestoreInstanceState(loadState.getBundle(SAVED_SNACKBAR));
     }
 
     @Override

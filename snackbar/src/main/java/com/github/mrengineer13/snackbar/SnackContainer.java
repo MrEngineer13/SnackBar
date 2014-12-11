@@ -1,8 +1,10 @@
 package com.github.mrengineer13.snackbar;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,13 +35,26 @@ class SnackContainer extends FrameLayout {
 
     private float mPreviousY;
 
+    public SnackContainer(Context context) {
+        super(context);
+        init();
+    }
+
+    public SnackContainer(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
     SnackContainer(ViewGroup container) {
         super(container.getContext());
 
-        setId(R.id.snackContainer);
-        setVisibility(View.GONE);
         container.addView(this, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        setVisibility(View.GONE);
+        setId(R.id.snackContainer);
+        init();
+    }
 
+    private void init() {
         mInAnimationSet = new AnimationSet(false);
 
         TranslateAnimation mSlideInAnimation = new TranslateAnimation(
