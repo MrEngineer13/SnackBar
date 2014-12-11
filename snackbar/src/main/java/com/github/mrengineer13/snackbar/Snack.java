@@ -20,8 +20,6 @@ class Snack implements Parcelable {
 
     final ColorStateList mBtnTextColor;
 
-    final Style mStyle;
-
     Snack(String message, String actionMessage, int actionIcon,
                  Parcelable token, short duration, ColorStateList textColor) {
         mMessage = message;
@@ -30,20 +28,7 @@ class Snack implements Parcelable {
         mToken = token;
         mDuration = duration;
         mBtnTextColor = textColor;
-        mStyle = Style.DEFAULT;
     }
-
-    Snack(String message, String actionMessage, int actionIcon,
-                 Parcelable token, short duration, Style style) {
-        mMessage = message;
-        mActionMessage = actionMessage;
-        mActionIcon = actionIcon;
-        mToken = token;
-        mDuration = duration;
-        mStyle = style;
-        mBtnTextColor = null;
-    }
-
     // reads data from parcel
     Snack(Parcel p) {
         mMessage = p.readString();
@@ -52,7 +37,6 @@ class Snack implements Parcelable {
         mToken = p.readParcelable(p.getClass().getClassLoader());
         mDuration = (short) p.readInt();
         mBtnTextColor = p.readParcelable(p.getClass().getClassLoader());
-        mStyle = Style.valueOf(p.readString());
     }
 
     // writes data to parcel
@@ -63,7 +47,6 @@ class Snack implements Parcelable {
         out.writeParcelable(mToken, 0);
         out.writeInt((int) mDuration);
         out.writeParcelable(mBtnTextColor, 0);
-        out.writeString(mStyle.name());
     }
 
     public int describeContents() {

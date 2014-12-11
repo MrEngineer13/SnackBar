@@ -190,12 +190,7 @@ class SnackContainer extends FrameLayout {
             holder.button.setVisibility(View.GONE);
         }
 
-        if (holder.snack.mBtnTextColor != null) {
-            holder.button.setTextColor(holder.snack.mBtnTextColor);
-        } else {
-            holder.button.setTextColor(getActionTextColor(holder.snack.mStyle));
-        }
-
+        holder.button.setTextColor(holder.snack.mBtnTextColor);
 
         if (showImmediately) {
             mInAnimationSet.setDuration(0);
@@ -238,21 +233,6 @@ class SnackContainer extends FrameLayout {
                 return true;
             }
         });
-    }
-
-    private ColorStateList getActionTextColor(Style style) {
-        switch (style) {
-            case ALERT:
-                return getResources().getColorStateList(R.color.sb__button_text_color_red);
-            case INFO:
-                return getResources().getColorStateList(R.color.sb__button_text_color_yellow);
-            case CONFIRM:
-                return getResources().getColorStateList(R.color.sb__button_text_color_green);
-            case DEFAULT:
-                return getResources().getColorStateList(R.color.sb__default_button_text_color);
-            default:
-                return getResources().getColorStateList(R.color.sb__default_button_text_color);
-        }
     }
 
     private void sendOnHide(SnackHolder snackHolder) {

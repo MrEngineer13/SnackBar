@@ -39,15 +39,11 @@ public class SnackBar {
 
     private View mParentView;
 
-    private TextView mSnackMsg;
-
     private TextView mSnackBtn;
 
     private OnMessageClickListener mClickListener;
 
     private OnVisibilityChangeListener mVisibilityChangeListener;
-
-    private Context mContext;
 
     public interface OnMessageClickListener {
 
@@ -62,17 +58,15 @@ public class SnackBar {
     }
 
     public SnackBar(Activity activity) {
-        mContext = activity.getApplicationContext();
         ViewGroup container = (ViewGroup) activity.findViewById(android.R.id.content);
         View v = activity.getLayoutInflater().inflate(R.layout.sb__snack, container, false);
         init(container, v);
     }
 
     public SnackBar(Context context, View v) {
-        mContext = context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.sb__snack_container, ((ViewGroup) v));
-        View snackLayout  = inflater.inflate(R.layout.sb__snack, ((ViewGroup) v), false);
+        View snackLayout = inflater.inflate(R.layout.sb__snack, ((ViewGroup) v), false);
         init((ViewGroup) v, snackLayout);
     }
 
@@ -83,12 +77,11 @@ public class SnackBar {
         }
 
         mParentView = v;
-        mSnackMsg = (TextView) v.findViewById(R.id.snackMessage);
         mSnackBtn = (TextView) v.findViewById(R.id.snackButton);
         mSnackBtn.setOnClickListener(mButtonListener);
     }
 
-    public static class Builder{
+    public static class Builder {
 
         private SnackBar mSnackBar;
 
@@ -96,38 +89,37 @@ public class SnackBar {
         private String mMessage;
         private String mActionMessage;
         private int mActionIcon = 0;
-        private Style mStyle = Style.DEFAULT;
         private Parcelable mToken;
-        private short mDuration =  MED_SNACK;
+        private short mDuration = MED_SNACK;
         private ColorStateList mTextColor;
 
 
-        public Builder(Activity activity){
+        public Builder(Activity activity) {
             mContext = activity.getApplicationContext();
             mSnackBar = new SnackBar(activity);
         }
 
-        public Builder(Context context, View v){
+        public Builder(Context context, View v) {
             mContext = context;
             mSnackBar = new SnackBar(context, v);
         }
 
-        public Builder withMessage(String message){
+        public Builder withMessage(String message) {
             mMessage = message;
             return this;
         }
 
-        public Builder withMessageId(int messageId){
+        public Builder withMessageId(int messageId) {
             mMessage = mContext.getString(messageId);
             return this;
         }
 
-        public Builder withActionMessage(String actionMessage){
+        public Builder withActionMessage(String actionMessage) {
             mActionMessage = actionMessage;
             return this;
         }
 
-        public Builder withActionMessageId(int actionMessageResId){
+        public Builder withActionMessageId(int actionMessageResId) {
             if (actionMessageResId > 0) {
                 mActionMessage = mContext.getString(actionMessageResId);
             }
@@ -135,57 +127,69 @@ public class SnackBar {
             return this;
         }
 
-        public Builder withActionIconId(int id){
+        public Builder withActionIconId(int id) {
             mActionIcon = id;
             return this;
         }
 
-        public Builder withStyle(Style style){
-            mStyle = style;
+        public Builder withStyle(Style style) {
+            mTextColor = getActionTextColor(style);
             return this;
         }
 
-        public Builder withToken(Parcelable token){
+        public Builder withToken(Parcelable token) {
             mToken = token;
             return this;
         }
 
-        public Builder withDuration(Short duration){
+        public Builder withDuration(Short duration) {
             mDuration = duration;
             return this;
         }
 
-        public Builder withTextColorId(int colorId){
+        public Builder withTextColorId(int colorId) {
             ColorStateList color = mContext.getResources().getColorStateList(colorId);
             mTextColor = color;
             return this;
         }
 
-        public Builder withOnClickListener(OnMessageClickListener onClickListener){
+        public Builder withOnClickListener(OnMessageClickListener onClickListener) {
             mSnackBar.setOnClickListener(onClickListener);
             return this;
         }
 
-        public Builder withVisibilityChangeListener(OnVisibilityChangeListener visibilityChangeListener){
+        public Builder withVisibilityChangeListener(OnVisibilityChangeListener visibilityChangeListener) {
             mSnackBar.setOnVisibilityChangeListener(visibilityChangeListener);
             return this;
         }
 
-        public SnackBar show(){
-            Snack message;
-            if (mTextColor == null){
-                message = new Snack(mMessage, (mActionMessage != null ? mActionMessage.toUpperCase() : null), mActionIcon, mToken, mDuration, mStyle);
-            } else {
-                message = new Snack(mMessage, (mActionMessage != null ? mActionMessage.toUpperCase() : null), mActionIcon, mToken, mDuration, mTextColor);
-            }
+        public SnackBar show() {
+            Snack message = new Snack(mMessage,
+                    (mActionMessage != null ? mActionMessage.toUpperCase() : null),
+                    mActionIcon, mToken, mDuration, mTextColor);
 
             mSnackBar.showMessage(message);
 
             return mSnackBar;
         }
+
+        private ColorStateList getActionTextColor(Style style) {
+            switch (style) {
+                case ALERT:
+                    return mContext.getResources().getColorStateList(R.color.sb__button_text_color_red);
+                case INFO:
+                    return mContext.getResources().getColorStateList(R.color.sb__button_text_color_yellow);
+                case CONFIRM:
+                    return mContext.getResources().getColorStateList(R.color.sb__button_text_color_green);
+                case DEFAULT:
+                    return mContext.getResources().getColorStateList(R.color.sb__default_button_text_color);
+                default:
+                    return mContext.getResources().getColorStateList(R.color.sb__default_button_text_color);
+            }
+        }
     }
 
-    private void showMessage(Snack message){
+    private void showMessage(Snack message) {
         mSnackContainer.showSnack(message, mParentView, mVisibilityChangeListener);
     }
 
