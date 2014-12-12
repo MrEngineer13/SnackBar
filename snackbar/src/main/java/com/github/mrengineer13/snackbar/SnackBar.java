@@ -39,8 +39,6 @@ public class SnackBar {
 
     private View mParentView;
 
-    private TextView mSnackBtn;
-
     private OnMessageClickListener mClickListener;
 
     private OnVisibilityChangeListener mVisibilityChangeListener;
@@ -77,8 +75,8 @@ public class SnackBar {
         }
 
         mParentView = v;
-        mSnackBtn = (TextView) v.findViewById(R.id.snackButton);
-        mSnackBtn.setOnClickListener(mButtonListener);
+        TextView snackBtn = (TextView) v.findViewById(R.id.snackButton);
+        snackBtn.setOnClickListener(mButtonListener);
     }
 
     public static class Builder {
@@ -166,7 +164,10 @@ public class SnackBar {
         public SnackBar show() {
             Snack message = new Snack(mMessage,
                     (mActionMessage != null ? mActionMessage.toUpperCase() : null),
-                    mActionIcon, mToken, mDuration, mTextColor);
+                    mActionIcon,
+                    mToken,
+                    mDuration,
+                    mTextColor != null ? mTextColor : getActionTextColor(Style.DEFAULT));
 
             mSnackBar.showMessage(message);
 

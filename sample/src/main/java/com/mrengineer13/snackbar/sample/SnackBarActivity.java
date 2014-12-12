@@ -174,8 +174,6 @@ public class SnackBarActivity extends ActionBarActivity
 
                 break;
         }
-
-
     }
 
     @Override
