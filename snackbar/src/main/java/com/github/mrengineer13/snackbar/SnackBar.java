@@ -50,8 +50,18 @@ public class SnackBar {
 
     public interface OnVisibilityChangeListener {
 
+        /**
+         * Gets called when a message is shown
+         *
+         * @param stackSize the number of messages left to show
+         */
         void onShow(int stackSize);
 
+        /**
+         * Gets called when a message is hidden
+         *
+         * @param stackSize the number of messages left to show
+         */
         void onHide(int stackSize);
     }
 
@@ -92,31 +102,66 @@ public class SnackBar {
         private ColorStateList mTextColor;
 
 
+        /**
+         * Constructs a new SnackBar
+         *
+         * @param activity the activity to inflate into
+         */
         public Builder(Activity activity) {
             mContext = activity.getApplicationContext();
             mSnackBar = new SnackBar(activity);
         }
 
+        /**
+         * Constructs a new SnackBar
+         *
+         * @param context the context used to obtain resources
+         * @param v the view to inflate the SnackBar into
+         */
         public Builder(Context context, View v) {
             mContext = context;
             mSnackBar = new SnackBar(context, v);
         }
 
+        /**
+         * Sets the message to display on the SnackBar
+         *
+         * @param message the literal string to display
+         * @return this builder
+         */
         public Builder withMessage(String message) {
             mMessage = message;
             return this;
         }
 
+        /**
+         * Sets the message to display on the SnackBar
+         *
+         * @param messageId the resource id of the string to display
+         * @return this builder
+         */
         public Builder withMessageId(int messageId) {
             mMessage = mContext.getString(messageId);
             return this;
         }
 
+        /**
+         * Sets the message to display as the action message
+         *
+         * @param actionMessage the literal string to display
+         * @return this builder
+         */
         public Builder withActionMessage(String actionMessage) {
             mActionMessage = actionMessage;
             return this;
         }
 
+        /**
+         * Sets the message to display as the action message
+         *
+         * @param actionMessageResId the resource id of the string to display
+         * @return this builder
+         */
         public Builder withActionMessageId(int actionMessageResId) {
             if (actionMessageResId > 0) {
                 mActionMessage = mContext.getString(actionMessageResId);
@@ -125,42 +170,89 @@ public class SnackBar {
             return this;
         }
 
+        /**
+         * Sets the action icon
+         *
+         * @param id the resource id of the icon to display
+         * @return this builder
+         */
         public Builder withActionIconId(int id) {
             mActionIcon = id;
             return this;
         }
 
+        /**
+         * Sets the {@link com.github.mrengineer13.snackbar.SnackBar.Style} for the action message
+         *
+         * @param style the {@link com.github.mrengineer13.snackbar.SnackBar.Style} to use
+         * @return this builder
+         */
         public Builder withStyle(Style style) {
             mTextColor = getActionTextColor(style);
             return this;
         }
 
+        /**
+         * The token used to restore the SnackBar state
+         *
+         * @param token the parcelable containing the saved SnackBar
+         * @return this builder
+         */
         public Builder withToken(Parcelable token) {
             mToken = token;
             return this;
         }
 
+        /**
+         * Sets the duration to show the message
+         *
+         * @param duration the number of milliseconds to show the message
+         * @return this builder
+         */
         public Builder withDuration(Short duration) {
             mDuration = duration;
             return this;
         }
 
+        /**
+         * Sets the {@link android.content.res.ColorStateList} for the action message
+         *
+         * @param colorId the
+         * @return this builder
+         */
         public Builder withTextColorId(int colorId) {
             ColorStateList color = mContext.getResources().getColorStateList(colorId);
             mTextColor = color;
             return this;
         }
 
+        /**
+         * Sets the OnClickListener for the action button
+         *
+         * @param onClickListener the listener to inform of click events
+         * @return this builder
+         */
         public Builder withOnClickListener(OnMessageClickListener onClickListener) {
             mSnackBar.setOnClickListener(onClickListener);
             return this;
         }
 
+        /**
+         * Sets the visibilityChangeListener for the SnackBar
+         *
+         * @param visibilityChangeListener the listener to inform of visibility changes
+         * @return this builder
+         */
         public Builder withVisibilityChangeListener(OnVisibilityChangeListener visibilityChangeListener) {
             mSnackBar.setOnVisibilityChangeListener(visibilityChangeListener);
             return this;
         }
 
+        /**
+         * Shows the first message in the SnackBar
+         *
+         * @return the SnackBar
+         */
         public SnackBar show() {
             Snack message = new Snack(mMessage,
                     (mActionMessage != null ? mActionMessage.toUpperCase() : null),
@@ -194,12 +286,22 @@ public class SnackBar {
         mSnackContainer.showSnack(message, mParentView, mVisibilityChangeListener);
     }
 
+    /**
+     * Calculates the height of the SnackBar
+     *
+     * @return the height of the SnackBar
+     */
     public int getHeight() {
         mParentView.measure(View.MeasureSpec.makeMeasureSpec(mParentView.getWidth(), View.MeasureSpec.EXACTLY),
                 View.MeasureSpec.makeMeasureSpec(mParentView.getHeight(), View.MeasureSpec.AT_MOST));
         return mParentView.getMeasuredHeight();
     }
 
+    /**
+     * Getter for the SnackBars parent view
+     *
+     * @return the parent view
+     */
     public View getContainerView() {
         return mParentView;
     }
@@ -214,20 +316,29 @@ public class SnackBar {
         }
     };
 
-    public SnackBar setOnClickListener(OnMessageClickListener listener) {
+    private SnackBar setOnClickListener(OnMessageClickListener listener) {
         mClickListener = listener;
         return this;
     }
 
-    public SnackBar setOnVisibilityChangeListener(OnVisibilityChangeListener listener) {
+    private SnackBar setOnVisibilityChangeListener(OnVisibilityChangeListener listener) {
         mVisibilityChangeListener = listener;
         return this;
     }
 
+    /**
+     * Clears all of the queued messages
+     *
+     * @param animate whether or not to animate the messages being hidden
+     */
     public void clear(boolean animate) {
         mSnackContainer.clearSnacks(animate);
     }
 
+    /**
+     * Clears all of the queued messages
+     *
+     */
     public void clear() {
         clear(true);
     }
