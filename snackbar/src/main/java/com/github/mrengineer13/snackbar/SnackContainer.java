@@ -1,11 +1,9 @@
 package com.github.mrengineer13.snackbar;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +15,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.github.mrengineer13.snackbar.SnackBar.OnVisibilityChangeListener;
-import com.github.mrengineer13.snackbar.SnackBar.Style;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -181,21 +178,14 @@ class SnackContainer extends FrameLayout {
         addView(holder.snackView);
         holder.messageView.setText(holder.snack.mMessage);
         if (holder.snack.mActionMessage != null) {
-            holder.messageView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
             holder.button.setVisibility(View.VISIBLE);
             holder.button.setText(holder.snack.mActionMessage);
             holder.button.setCompoundDrawablesWithIntrinsicBounds(holder.snack.mActionIcon, 0, 0, 0);
         } else {
-            holder.messageView.setGravity(Gravity.CENTER);
             holder.button.setVisibility(View.GONE);
         }
 
-        if (holder.snack.mBtnTextColor != null) {
-            holder.button.setTextColor(holder.snack.mBtnTextColor);
-        } else {
-            holder.button.setTextColor(getActionTextColor(holder.snack.mStyle));
-        }
-
+        holder.button.setTextColor(holder.snack.mBtnTextColor);
 
         if (showImmediately) {
             mInAnimationSet.setDuration(0);
@@ -238,21 +228,6 @@ class SnackContainer extends FrameLayout {
                 return true;
             }
         });
-    }
-
-    private ColorStateList getActionTextColor(Style style) {
-        switch (style) {
-            case ALERT:
-                return getResources().getColorStateList(R.color.sb__button_text_color_red);
-            case INFO:
-                return getResources().getColorStateList(R.color.sb__button_text_color_yellow);
-            case CONFIRM:
-                return getResources().getColorStateList(R.color.sb__button_text_color_green);
-            case DEFAULT:
-                return getResources().getColorStateList(R.color.sb__default_button_text_color);
-            default:
-                return getResources().getColorStateList(R.color.sb__default_button_text_color);
-        }
     }
 
     private void sendOnHide(SnackHolder snackHolder) {
