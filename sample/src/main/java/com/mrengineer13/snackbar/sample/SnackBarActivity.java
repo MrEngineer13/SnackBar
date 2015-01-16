@@ -43,7 +43,8 @@ public class SnackBarActivity extends ActionBarActivity
 
     static final int STRING_TYPE_STRING = 0, STRING_TYPE_RESOURCE = 1;
 
-    private Spinner mMsgLengthOptions, mDurationOptions, mActionBtnOptions, mActionBtnColorOptions, mStringTypeOptions;
+    private Spinner mMsgLengthOptions, mDurationOptions, mActionBtnOptions,
+            mActionBtnColorOptions, mBGColorOptions, mStringTypeOptions;
 
     private SnackBar mSnackBar;
 
@@ -56,6 +57,7 @@ public class SnackBarActivity extends ActionBarActivity
         mDurationOptions = (Spinner) findViewById(R.id.snack_duration_selector);
         mActionBtnOptions = (Spinner) findViewById(R.id.action_btn_presence_selector);
         mActionBtnColorOptions = (Spinner) findViewById(R.id.action_btn_color);
+        mBGColorOptions = (Spinner) findViewById(R.id.bg_color);
         mStringTypeOptions = (Spinner) findViewById(R.id.action_btn_string_type);
     }
 
@@ -88,6 +90,8 @@ public class SnackBarActivity extends ActionBarActivity
         int messageRes = -1;
         short duration = 0;
         SnackBar.Style style;
+        SnackBar.Style bgStyle;
+        int bgColor;
 
         int selectedStringType = mStringTypeOptions.getSelectedItemPosition();
         int selectedMessageLength = mMsgLengthOptions.getSelectedItemPosition();
@@ -138,6 +142,17 @@ public class SnackBarActivity extends ActionBarActivity
                 break;
         }
 
+        int selectedBGColor = mBGColorOptions.getSelectedItemPosition();
+        switch (selectedBGColor) {
+            default:
+            case DEFAULT:
+                bgColor = com.github.mrengineer13.snackbar.R.color.sb__snack_bkgnd;
+                break;
+            case ALERT:
+                bgColor = android.R.color.holo_red_light;
+                break;
+        }
+
         int selectedActionBtnExistance = mActionBtnOptions.getSelectedItemPosition();
         switch (selectedActionBtnExistance) {
             case ACTION_BTN:
@@ -147,6 +162,7 @@ public class SnackBarActivity extends ActionBarActivity
                             .withMessage(message)
                             .withActionMessage("Action")
                             .withStyle(style)
+                            .withBackgroundColorId(bgColor)
                             .withDuration(duration)
                             .show();
                 } else {
@@ -155,6 +171,7 @@ public class SnackBarActivity extends ActionBarActivity
                             .withMessageId(messageRes)
                             .withActionMessageId(R.string.action)
                             .withStyle(style)
+                            .withBackgroundColorId(bgColor)
                             .withDuration(duration)
                             .show();
                 }
@@ -163,11 +180,13 @@ public class SnackBarActivity extends ActionBarActivity
                 if (messageRes <= 0) {
                     mSnackBar = new SnackBar.Builder(this)
                             .withMessage(message)
+                            .withBackgroundColorId(bgColor)
                             .withDuration(duration)
                             .show();
                 } else {
                     mSnackBar = new SnackBar.Builder(this)
                             .withMessageId(messageRes)
+                            .withBackgroundColorId(bgColor)
                             .withDuration(duration)
                             .show();
                 }
