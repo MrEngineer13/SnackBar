@@ -100,7 +100,8 @@ public class SnackBar {
         private Parcelable mToken;
         private short mDuration = MED_SNACK;
         private ColorStateList mTextColor;
-
+        private ColorStateList mBackgroundColor;
+        private int mHeight;
 
         /**
          * Constructs a new SnackBar
@@ -227,6 +228,29 @@ public class SnackBar {
         }
 
         /**
+         * Sets the {@link android.content.res.ColorStateList} for the SnackBar background
+         *
+         * @param colorId the SnackBar Background color
+         * @return this builder
+         */
+        public Builder withBackgroundColorId(int colorId) {
+            ColorStateList color = mContext.getResources().getColorStateList(colorId);
+            mBackgroundColor = color;
+            return this;
+        }
+
+        /**
+         * Sets the height for SnackBar
+         *
+         * @param height the height of SnackBar
+         * @return this builder
+         */
+        public Builder withSnackBarHeight(int height) {
+            mHeight = height;
+            return this;
+        }
+
+        /**
          * Sets the OnClickListener for the action button
          *
          * @param onClickListener the listener to inform of click events
@@ -259,7 +283,9 @@ public class SnackBar {
                     mActionIcon,
                     mToken,
                     mDuration,
-                    mTextColor != null ? mTextColor : getActionTextColor(Style.DEFAULT));
+                    mTextColor != null ? mTextColor : getActionTextColor(Style.DEFAULT),
+                    mBackgroundColor != null ? mBackgroundColor : mContext.getResources().getColorStateList(R.color.sb__snack_bkgnd),
+                    mHeight != 0 ? mHeight : 0);
 
             mSnackBar.showMessage(message);
 

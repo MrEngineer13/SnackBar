@@ -1,9 +1,11 @@
 package com.github.mrengineer13.snackbar;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -186,6 +188,9 @@ class SnackContainer extends FrameLayout {
         }
 
         holder.button.setTextColor(holder.snack.mBtnTextColor);
+        holder.snackView.setBackgroundColor(holder.snack.mBackgroundColor.getDefaultColor());
+        if(holder.snack.mHeight > 0)
+            holder.snackView.getLayoutParams().height = this.getPxFromDp(holder.snack.mHeight);
 
         if (showImmediately) {
             mInAnimationSet.setDuration(0);
@@ -300,4 +305,15 @@ class SnackContainer extends FrameLayout {
             visListener = listener;
         }
     }
+
+    /*
+     * Helpers
+     */
+    private int getPxFromDp(int dp) {
+        Resources rs = getResources();
+        int pxConverter = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, rs.getDisplayMetrics());
+        int px = pxConverter * dp;
+        return px;
+    }
+
 }
