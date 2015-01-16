@@ -19,7 +19,10 @@
         <item>Confirm</item>
         <item>Info</item>
     </string-array>
-
+    <string-array name="bg_color">
+        <item>Default</item>
+        <item>Danger</item>
+    </string-array>
     <string-array name="snack_string_types">
         <item>String</item>
         <item>Resources</item>
