@@ -136,6 +136,7 @@ class SnackContainer extends FrameLayout {
 
     public void clearSnacks(boolean animate) {
         mSnacks.clear();
+        removeCallbacks(mHideRunnable);
         if (animate) mHideRunnable.run();
     }
 
