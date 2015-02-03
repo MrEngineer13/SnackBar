@@ -13,6 +13,10 @@
 * Swipe down to dismiss all notifications as per documentation
 * Backwards compatible to 2.3.x
 
+#### New Features since 1.0.0
+* Set custom background color
+* Set custom height
+
 ![SnackBar Screenshot via Google](http://material-design.storage.googleapis.com/images/components-toasts-specs-spec_toast_03_1_large_mdpi.png)
 
 
@@ -45,6 +49,7 @@ Just add the following to your `build.gradle`.
         .withActionMessageId(actionMsgId)
 
         .withTextColorId(textColorId)
+        .withBackGroundColorId(bgColorId)
         .withVisibilityChangeListener(this)
         .withStyle(style)
         .withDuration(duration)
@@ -60,6 +65,7 @@ Just add the following to your `build.gradle`.
         .withActionMessageId(actionMsgId)
 
         .withTextColorId(textColorId)
+        .withBackGroundColorId(bgColorId)
         .withVisibilityChangeListener(this)
         .withStyle(style)
         .withDuration(duration)
