@@ -344,6 +344,16 @@ public class SnackBar {
     }
 
     /**
+     * Hides all snacks
+     *
+     */
+    public void hide() {
+        mSnackContainer.hide();
+        clear();
+    }
+
+
+    /**
      * All snacks will be restored using the view from this Snackbar
      */
     public void onRestoreInstanceState(Bundle state) {
