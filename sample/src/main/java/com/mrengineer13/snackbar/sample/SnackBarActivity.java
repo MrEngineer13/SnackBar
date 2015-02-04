@@ -146,10 +146,10 @@ public class SnackBarActivity extends ActionBarActivity
         switch (selectedBGColor) {
             default:
             case DEFAULT:
-                bgColor = com.github.mrengineer13.snackbar.R.color.sb__snack_bkgnd;
+                bgColor = R.color.sb__snack_bkgnd;
                 break;
             case ALERT:
-                bgColor = android.R.color.holo_red_light;
+                bgColor = R.color.sb__snack_alert_bkgnd;
                 break;
         }
 
