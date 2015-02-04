@@ -20,14 +20,21 @@ class Snack implements Parcelable {
 
     final ColorStateList mBtnTextColor;
 
+    final ColorStateList mBackgroundColor;
+
+    final int mHeight;
+
     Snack(String message, String actionMessage, int actionIcon,
-                 Parcelable token, short duration, ColorStateList textColor) {
+                 Parcelable token, short duration, ColorStateList textColor,
+                 ColorStateList backgroundColor, int height) {
         mMessage = message;
         mActionMessage = actionMessage;
         mActionIcon = actionIcon;
         mToken = token;
         mDuration = duration;
         mBtnTextColor = textColor;
+        mBackgroundColor = backgroundColor;
+        mHeight = height;
     }
     // reads data from parcel
     Snack(Parcel p) {
@@ -37,6 +44,8 @@ class Snack implements Parcelable {
         mToken = p.readParcelable(p.getClass().getClassLoader());
         mDuration = (short) p.readInt();
         mBtnTextColor = p.readParcelable(p.getClass().getClassLoader());
+        mBackgroundColor = p.readParcelable(p.getClass().getClassLoader());
+        mHeight = p.readInt();
     }
 
     // writes data to parcel
@@ -47,6 +56,8 @@ class Snack implements Parcelable {
         out.writeParcelable(mToken, 0);
         out.writeInt((int) mDuration);
         out.writeParcelable(mBtnTextColor, 0);
+        out.writeParcelable(mBackgroundColor, 0);
+        out.writeInt(mHeight);
     }
 
     public int describeContents() {
