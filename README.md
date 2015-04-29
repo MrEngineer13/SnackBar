@@ -49,7 +49,7 @@ Just add the following to your `build.gradle`.
         .withActionMessageId(actionMsgId)
 
         .withTextColorId(textColorId)
-        .withBackGroundColorId(bgColorId)
+        .withBackgroundColorId(bgColorId)
         .withVisibilityChangeListener(this)
         .withStyle(style)
         .withDuration(duration)
@@ -65,7 +65,7 @@ Just add the following to your `build.gradle`.
         .withActionMessageId(actionMsgId)
 
         .withTextColorId(textColorId)
-        .withBackGroundColorId(bgColorId)
+        .withBackgroundColorId(bgColorId)
         .withVisibilityChangeListener(this)
         .withStyle(style)
         .withDuration(duration)
