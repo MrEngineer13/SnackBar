@@ -102,6 +102,8 @@ public class SnackBar {
         private ColorStateList mTextColor;
         private ColorStateList mBackgroundColor;
         private int mHeight;
+        private boolean mClear;
+        private boolean mAnimateClear;
 
         /**
          * Constructs a new SnackBar
@@ -273,6 +275,26 @@ public class SnackBar {
         }
 
         /**
+         * Clears all of the queued SnackBars, animates the message being hidden
+         * @return this builder
+         */
+        public Builder withClearQueued() {
+            return withClearQueued(true);
+        }
+
+        /**
+         * Clears all of the queued SnackBars
+         *
+         * @param animate whether or not to animate the messages being hidden
+         * @return this builder
+         */
+        public Builder withClearQueued(boolean animate) {
+            mAnimateClear = animate;
+            mClear = true;
+            return this;
+        }
+
+        /**
          * Shows the first message in the SnackBar
          *
          * @return the SnackBar
@@ -286,7 +308,9 @@ public class SnackBar {
                     mTextColor != null ? mTextColor : getActionTextColor(Style.DEFAULT),
                     mBackgroundColor != null ? mBackgroundColor : mContext.getResources().getColorStateList(R.color.sb__snack_bkgnd),
                     mHeight != 0 ? mHeight : 0);
-
+            if (mClear) {
+                mSnackBar.clear(mAnimateClear);
+            }
             mSnackBar.showMessage(message);
 
             return mSnackBar;
