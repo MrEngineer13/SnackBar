@@ -31,12 +31,6 @@ Just add the following to your `build.gradle`.
         compile 'com.github.mrengineer13:snackbar:1.1.0'
     }
 
-###Eclipse
-1. Download ZIP then extract the SnackBar project
-1. From Eclipse menu: New > Android Project from Existing Code > SnackBar project > Finish
-1. Right click on your project
-1. Android > Library: Add > SnackBar
-
 ## 2. Show a message
 
 #### Build SnackBar in Activity
@@ -44,6 +38,7 @@ Just add the following to your `build.gradle`.
         .withOnClickListener(this)
         .withMessage("This library is awesome!") // OR
         .withMessageId(messageId)
+        .withTypeFace(myAwesomeTypeFace)
 
         .withActionMessage("Action") // OR
         .withActionMessageId(actionMsgId)
@@ -60,6 +55,7 @@ Just add the following to your `build.gradle`.
         .withOnClickListener(this)
         .withMessage("This library is awesome!") // OR
         .withMessageId(messageId)
+        .withTypeFace(myAwesomeTypeFace)
 
         .withActionMessage("Action") // OR
         .withActionMessageId(actionMsgId)

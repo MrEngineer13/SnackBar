@@ -188,6 +188,9 @@ class SnackContainer extends FrameLayout {
             holder.button.setVisibility(View.GONE);
         }
 
+        holder.button.setTypeface(holder.snack.mTypeface);
+        holder.messageView.setTypeface(holder.snack.mTypeface);
+
         holder.button.setTextColor(holder.snack.mBtnTextColor);
         holder.snackView.setBackgroundColor(holder.snack.mBackgroundColor.getDefaultColor());
         if(holder.snack.mHeight > 0)

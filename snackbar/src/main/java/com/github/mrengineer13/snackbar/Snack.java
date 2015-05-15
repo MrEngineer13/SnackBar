@@ -1,10 +1,9 @@
 package com.github.mrengineer13.snackbar;
 
 import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.os.Parcel;
 import android.os.Parcelable;
-
-import com.github.mrengineer13.snackbar.SnackBar.Style;
 
 class Snack implements Parcelable {
 
@@ -24,9 +23,11 @@ class Snack implements Parcelable {
 
     final int mHeight;
 
+    Typeface mTypeface;
+
     Snack(String message, String actionMessage, int actionIcon,
-                 Parcelable token, short duration, ColorStateList textColor,
-                 ColorStateList backgroundColor, int height) {
+          Parcelable token, short duration, ColorStateList textColor,
+          ColorStateList backgroundColor, int height, Typeface typeFace) {
         mMessage = message;
         mActionMessage = actionMessage;
         mActionIcon = actionIcon;
@@ -35,6 +36,7 @@ class Snack implements Parcelable {
         mBtnTextColor = textColor;
         mBackgroundColor = backgroundColor;
         mHeight = height;
+        mTypeface = typeFace;
     }
     // reads data from parcel
     Snack(Parcel p) {
@@ -46,6 +48,7 @@ class Snack implements Parcelable {
         mBtnTextColor = p.readParcelable(p.getClass().getClassLoader());
         mBackgroundColor = p.readParcelable(p.getClass().getClassLoader());
         mHeight = p.readInt();
+        mTypeface = (Typeface) p.readValue(p.getClass().getClassLoader());
     }
 
     // writes data to parcel
@@ -58,6 +61,7 @@ class Snack implements Parcelable {
         out.writeParcelable(mBtnTextColor, 0);
         out.writeParcelable(mBackgroundColor, 0);
         out.writeInt(mHeight);
+        out.writeValue(mTypeface);
     }
 
     public int describeContents() {
