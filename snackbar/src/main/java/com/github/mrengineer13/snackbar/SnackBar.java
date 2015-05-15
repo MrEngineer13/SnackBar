@@ -18,6 +18,7 @@ package com.github.mrengineer13.snackbar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -102,6 +103,12 @@ public class SnackBar {
         private ColorStateList mTextColor;
         private ColorStateList mBackgroundColor;
         private int mHeight;
+        private boolean mClear;
+        private boolean mAnimateClear;
+        private Typeface mTypeFace;
+        private ColorStateList mBackgroundColor;
+        private int mHeight;
+
 
         /**
          * Constructs a new SnackBar
@@ -273,6 +280,37 @@ public class SnackBar {
         }
 
         /**
+         * Clears all of the queued SnackBars, animates the message being hidden
+         * @return this builder
+         */
+        public Builder withClearQueued() {
+            return withClearQueued(true);
+        }
+
+        /**
+         * Clears all of the queued SnackBars
+         *
+         * @param animate whether or not to animate the messages being hidden
+         * @return this builder
+         */
+        public Builder withClearQueued(boolean animate) {
+            mAnimateClear = animate;
+            mClear = true;
+            return this;
+        }
+
+        /**
+         * Sets the Typeface for the SnackBar
+         *
+         * @param typeFace the typeface to apply to the SnackBar
+         * @return this builder
+         */
+        public Builder withTypeFace(Typeface typeFace) {
+            mTypeFace = typeFace;
+            return this;
+        }
+
+        /**
          * Shows the first message in the SnackBar
          *
          * @return the SnackBar
@@ -285,7 +323,15 @@ public class SnackBar {
                     mDuration,
                     mTextColor != null ? mTextColor : getActionTextColor(Style.DEFAULT),
                     mBackgroundColor != null ? mBackgroundColor : mContext.getResources().getColorStateList(R.color.sb__snack_bkgnd),
+                    mHeight != 0 ? mHeight : 0,
+                    mTypeFace);
+                    mTextColor != null ? mTextColor : getActionTextColor(Style.DEFAULT),
+                    mBackgroundColor != null ? mBackgroundColor : mContext.getResources().getColorStateList(R.color.sb__snack_bkgnd),
                     mHeight != 0 ? mHeight : 0);
+
+            if (mClear) {
+                mSnackBar.clear(mAnimateClear);
+            }
 
             mSnackBar.showMessage(message);
 
