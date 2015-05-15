@@ -95,4 +95,4 @@ If you have a bug to report a feature to request or have other questions, [file 
 [Lotería Navidad 2014]:https://play.google.com/store/apps/details?id=com.moya.garcia.loterianavidad&hl=es
 [Journal]:https://play.google.com/store/apps/details?id=com.journey.app
 [My Garage]:https://play.google.com/store/apps/details?id=com.moremu.mygarage
-[Quote Me]:https://play.google.com/store/apps/details?id=com.wching.quoteme
+[QuoteMe]:https://play.google.com/store/apps/details?id=com.wching.quoteme
