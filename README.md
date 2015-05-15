@@ -16,6 +16,7 @@
 #### New Features since 1.0.0
 * Set custom background color
 * Set custom height
+* Set custom typeface
 
 ![SnackBar Screenshot via Google](http://material-design.storage.googleapis.com/images/components-toasts-specs-spec_toast_03_1_large_mdpi.png)
 
@@ -28,7 +29,7 @@
 Just add the following to your `build.gradle`.
 
     dependencies {
-        compile 'com.github.mrengineer13:snackbar:1.1.0'
+        compile 'com.github.mrengineer13:snackbar:1.2.0'
     }
 
 ## 2. Show a message
@@ -77,6 +78,8 @@ Icon | Application
 <img src="https://lh6.ggpht.com/pTT1RebLeNJMH7pm9XgQtDWpm0azxOJ7dFYkZqAMT-QE1oi2OGor3qI1ZgiJze4uYvo=w300-rw" width="48" height="48" /> | [Score It]
 <img src="https://lh5.ggpht.com/_r-p6eZOnWIPpu5B-jNHWeHBhT-2UC_OZxRFE-BapvdJLIBA2qrrSrOLm15SZsAC1X0=w300-rw" width="48" height="48" /> | [Lotería Navidad 2014]
 <img src="https://lh3.ggpht.com/Mz6YqxKsLfVbjYVHj_3nfUxLe5Yvl9W4KO2sKnwud6hZl5mnGitm55PnILT2jx4Hafv6=w300-rw" width="48" height="48" /> | [Journal]
+<img src="https://lh4.ggpht.com/DvzthG-_lJsR7Ny8in8KPtEuNAgzzJSdlvUg2EG8qvXH0Oq5YJFQffWjFNKblx2GVAA=w300" width="48" height="48" /> | [My Garage]
+<img src="https://lh6.ggpht.com/hdfIOAe9xYS3NzgTx1_3IfVwCP8UCyxDpXHxbviVMPg3iCEkrZudFZ4iuYQNvOp-aKI=w300" width="48" height="48" /> | [QuoteMe]
 
 # Contribution
 ## Pull requests are welcome!
