@@ -4,6 +4,10 @@
 
 ![Mr.Waffle](https://cloud.githubusercontent.com/assets/1573624/4054112/5f907220-2d88-11e4-9624-dd08fa49ac78.png)
 
+# DEPRECATED
+
+This library is deprecated in favor of the new [Design Support Library](http://developer.android.com/tools/support-library/features.html#design) which includes a [Snackbar](http://developer.android.com/reference/android/support/design/widget/Snackbar.html). It is due to this development that this library is no longer activly being developed.
+
 # Features
 
 * Set message text and optionally duration
