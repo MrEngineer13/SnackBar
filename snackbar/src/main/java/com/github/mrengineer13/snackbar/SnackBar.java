@@ -121,7 +121,7 @@ public class SnackBar {
          * Constructs a new SnackBar
          *
          * @param context the context used to obtain resources
-         * @param v the view to inflate the SnackBar into
+         * @param v       the view to inflate the SnackBar into
          */
         public Builder(Context context, View v) {
             mContext = context;
@@ -278,6 +278,7 @@ public class SnackBar {
 
         /**
          * Clears all of the queued SnackBars, animates the message being hidden
+         *
          * @return this builder
          */
         public Builder withClearQueued() {
@@ -403,7 +404,6 @@ public class SnackBar {
 
     /**
      * Clears all of the queued messages
-     *
      */
     public void clear() {
         clear(true);
@@ -411,7 +411,6 @@ public class SnackBar {
 
     /**
      * Hides all snacks
-     *
      */
     public void hide() {
         mSnackContainer.hide();
