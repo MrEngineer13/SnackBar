@@ -12,10 +12,10 @@ android {
 
     defaultConfig {
         applicationId "com.mrengineer13.snackbar.sample"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
-        versionCode 8
-        versionName "1.7"
+        versionCode 10
+        versionName "1.9"
     }
 
     packagingOptions {
@@ -29,9 +29,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    //compile 'com.github.mrengineer13:snackbar:0.4.0'
-    compile project(':snackbar')
-    compile(name: 'aboutLibrary', ext: 'aar')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+//    implementation 'com.github.mrengineer13:snackbar:1.2.0'
+    implementation project(':snackbar')
+    implementation(name: 'aboutLibrary', ext: 'aar')
 }
