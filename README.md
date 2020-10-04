@@ -4,6 +4,10 @@
 
 ![Mr.Waffle](https://cloud.githubusercontent.com/assets/1573624/4054112/5f907220-2d88-11e4-9624-dd08fa49ac78.png)
 
+# Deprecated
+
+This library is deprecated in favor of the new [Design Support Library](http://developer.android.com/tools/support-library/features.html#design) which includes a [Snackbar](http://developer.android.com/reference/android/support/design/widget/Snackbar.html). It is due to this development that this library is no longer activly being developed.
+
 # Features
 
 * Set message text and optionally duration
@@ -94,3 +98,5 @@ If you have a bug to report a feature to request or have other questions, [file 
 [Score It]:https://play.google.com/store/apps/details?id=com.sbgapps.scoreit
 [Lotería Navidad 2014]:https://play.google.com/store/apps/details?id=com.moya.garcia.loterianavidad&hl=es
 [Journal]:https://play.google.com/store/apps/details?id=com.journey.app
+[My Garage]:https://play.google.com/store/apps/details?id=com.moremu.mygarage
+[QuoteMe]:https://play.google.com/store/apps/details?id=com.wching.quoteme

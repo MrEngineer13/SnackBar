@@ -26,8 +26,9 @@ class Snack implements Parcelable {
     Typeface mTypeface;
 
     Snack(String message, String actionMessage, int actionIcon,
-          Parcelable token, short duration, ColorStateList textColor,
-          ColorStateList backgroundColor, int height, Typeface typeFace) {
+                 Parcelable token, short duration, ColorStateList textColor,
+                 ColorStateList backgroundColor, int height, Typeface typeFace) {
+
         mMessage = message;
         mActionMessage = actionMessage;
         mActionIcon = actionIcon;

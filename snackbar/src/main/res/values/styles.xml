@@ -26,12 +26,12 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:layout_marginLeft">@dimen/horizontal_margin</item>
-        <item name="android:layout_marginStart" tools:ignore="NewApi">@dimen/horizontal_margin</item>
-        <item name="android:layout_marginRight">@dimen/horizontal_margin</item>
-        <item name="android:layout_marginEnd" tools:ignore="NewApi">@dimen/horizontal_margin</item>
-        <item name="android:layout_marginTop">@dimen/vertical_margin_top</item>
-        <item name="android:layout_marginBottom">@dimen/vertical_margin_bottom</item>
+        <item name="android:layout_marginLeft">@dimen/sb__horizontal_margin</item>
+        <item name="android:layout_marginStart" tools:ignore="NewApi">@dimen/sb__horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/sb__horizontal_margin</item>
+        <item name="android:layout_marginEnd" tools:ignore="NewApi">@dimen/sb__horizontal_margin</item>
+        <item name="android:layout_marginTop">@dimen/sb__vertical_margin_top</item>
+        <item name="android:layout_marginBottom">@dimen/sb__vertical_margin_bottom</item>
         <item name="android:textSize">14sp</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:textColor">#fff</item>
@@ -43,10 +43,10 @@
         <item name="android:drawablePadding">12dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:paddingLeft">@dimen/horizontal_margin</item>
-        <item name="android:paddingRight">@dimen/horizontal_margin</item>
-        <item name="android:paddingTop">@dimen/vertical_margin_top</item>
-        <item name="android:paddingBottom">@dimen/vertical_margin_bottom</item>
+        <item name="android:paddingLeft">@dimen/sb__horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/sb__horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/sb__vertical_margin_top</item>
+        <item name="android:paddingBottom">@dimen/sb__vertical_margin_bottom</item>
         <item name="android:textColor">@color/sb__default_button_text_color</item>
         <item name="android:editable">false</item>
         <item name="android:textSize">14sp</item>
