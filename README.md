@@ -28,7 +28,7 @@ This library is deprecated in favor of the new [Design Support Library](http://d
 [![SnackBar on Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](https://play.google.com/store/apps/details?id=com.mrengineer13.snackbar.sample)
 
 # Usage
-##1. Add SnackBar to your project
+1. Add SnackBar to your project
 ###Maven
 Just add the following to your `build.gradle`.
 
@@ -36,7 +36,7 @@ Just add the following to your `build.gradle`.
         compile 'com.github.mrengineer13:snackbar:1.2.0'
     }
 
-## 2. Show a message
+2. Show a message
 
 #### Build SnackBar in Activity
     new SnackBar.Builder(this)
@@ -90,7 +90,7 @@ Icon | Application
 
 Feel free to contribute to SnackBar.
 
-If you've implemented a bug fix or new feature, just create a pull request on the dev branch.
+Just create your branch then submit pull request on the dev branch.
 
 If you have a bug to report a feature to request or have other questions, [file an issue](https://github.com/MrEngineer13/SnackBar/issues/new). I'll try to answer as soon as I can.
 

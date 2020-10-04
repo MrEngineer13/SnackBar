@@ -17,18 +17,19 @@ package com.mrengineer13.snackbar.sample;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.mrengineer13.about.AboutActivity;
 import com.github.mrengineer13.snackbar.SnackBar;
 
 
-public class SnackBarActivity extends ActionBarActivity
+public class SnackBarActivity extends AppCompatActivity
         implements SnackBar.OnMessageClickListener {
 
     public static final String SAVED_SNACKBAR = "SAVED_SNACKBAR";
